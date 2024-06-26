@@ -7,9 +7,81 @@ const clc = require('cli-color');
 require('dotenv').config();
 const HttpsProxyAgent = require('https-proxy-agent');
 
-const proxyUrl = process.env.PROXY_URL;
-const httpsAgent = new HttpsProxyAgent(proxyUrl);
 
+
+function getProxyUrl() {
+    const randomPort = Math.floor(Math.random() * (9100 - 9000 + 1)) + 9000;
+    const proxyUrl = process.env.PROXY_URL + randomPort;
+    return new HttpsProxyAgent(proxyUrl);
+}
+
+const httpsAgent = getProxyUrl();
+
+
+
+async function useLlamaAPI({ parts = [{"text": "create a simple json object of imaginary data"}], parseResponse = true }) {
+    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+    const url = `https://openrouter.ai/api/v1/chat/completions`;
+  
+    const data = {
+      model: "meta-llama/llama-3-8b-instruct",
+      messages: parts.map(part => ({ role: "user", content: part.text.replace(/\n/g, " ") })),
+    };
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error(`OpenRouter API returned an error: ${errorData.error.message}`);
+        throw new Error(errorData.error.message);
+      }
+  
+      const responseData = await response.json();
+      let content = responseData.choices[0].message.content;
+  
+      // Trim the content to remove code block markers
+      content = content.trim();
+      if (content.startsWith("```json")) {
+        content = content.slice(7).trim();
+      }
+      if (content.endsWith("```")) {
+        content = content.slice(0, -3).trim();
+      }
+  
+      if (parseResponse) {
+        try {
+          // Use regex to extract the JSON content
+          const jsonMatch = content.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            content = jsonMatch[0];
+          } else {
+            throw new Error("No valid JSON found in response content");
+          }
+        } catch (jsonError) {
+          console.error(`Failed to parse JSON content: ${jsonError.message}`);
+          throw new Error("Failed to parse JSON content");
+        }
+      }
+  
+      const parsedContent = parseResponse ? JSON.parse(content) : content;
+      console.log(parsedContent);
+      return parsedContent;
+  
+    } catch (error) {
+      console.error(`Error using OpenRouter API: ${error.message}`);
+      throw error;
+    }
+  }
+  
+  
 
 async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
     const waybackApiUrl = "http://web.archive.org/cdx/search/cdx";
@@ -51,6 +123,20 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
         console.log(clc.yellow('\n⚠️ No results found for the given URL and date range.\n'));
     }
 }
+
+function logChannelInfo(channel) {
+    console.log(clc.white(Object.entries(channel)
+        .filter(([key, value]) => value && (typeof value === 'string' ? value.trim() : value))
+        .map(([key, value]) => {
+            if (Array.isArray(value)) {
+                return `         ${key}: ${value.join(', ')}`;
+            }
+            return `         ${key}: ${value}`;
+        })
+        .join('\n')));
+    console.log(clc.white('         ---'));
+}
+
 
 async function fetchAndLogFreeTVLinks(urls) {
     for (const baseUrl of urls) {
@@ -166,43 +252,53 @@ async function fetchAndLogFreeTVLinks(urls) {
                             // Process each country link
                             for (const countryLink of countryLinks) {
                                 console.log(clc.cyan(`         🔗 Country Link: ${countryLink.text} - ${countryLink.url}`));
-
-                                // Visit the country link and extract channel information
+                        
                                 try {
                                     const response = await axios.get(countryLink.url, { httpsAgent });
                                     const $ = cheerio.load(response.data);
-
-                                    // Find the table that contains "Channel Name" and "Position"
+                        
+                                    // Find the table that contains "Channel Name" and "Logo"
                                     const targetTable = $('table').filter(function () {
                                         return $(this).text().includes('Channel Name') && $(this).text().includes('Logo');
                                     }).first();
-
+                        
                                     if (targetTable.length) {
                                         console.log(clc.green(`      📡 Channel information for ${countryLink.url}:`));
+                        
+                                        // Get the HTML of the target table
+                                        const tableHtml = targetTable.html();
+                        
+                                        // Use LlamaAPI to extract data from the table
+                                        const extractionPrompt = `Extract the data from this HTML table into a JSON object. The table contains information about TV channels. Each channel can have multiple satellites and corresponding values in subsequent columns. Use arrays for all fields to accommodate multiple values. Here's an example of the expected format:
 
-                                        // Extract and log the information from each row
-                                        // Get column names from the header row
-                                        const columnNames = targetTable.find('tr:first-child td').map((_, cell) => $(cell).text().trim()).get();
+data = {
+    "Aurora TV": {
+        "position": ["16.0°E"],
+        "satellite": ["Eutelsat 16A"],
+        "satellite_url": ["https://www.lyngsat.com/Eutelsat-16A.html"],
+        "beam": ["Europe B"],
+        "beam_url": ["https://www.lyngsat.com/maps/footprints/Eutelsat-16A-Europe-B.html"],
+        "eirp": [50],
+        "frequency_polarization": ["11512 H"],
+        "frequency_url": ["https://www.lyngsat.com/muxes/Eutelsat-16A_Europe-B_11512-H.html"],
+        "video_system": ["DVB-s2"],
+        "quality": ["SD"],
+        "sr_fec": ["30000"],
+        "lang": ["Hrv"],
+        "encryption": ["_"],
+        "package": ["_"],
+        "source": ["Wellikan 230428"]
+    }
+}
 
-                                        targetTable.find('tr').each((index, row) => {
-                                            if (index === 0) return; // Skip the header row
-
-                                            const $row = $(row);
-                                            const rowData = {};
-
-                                            // Populate rowData with column names and values
-                                            $row.find('td').each((cellIndex, cell) => {
-                                                if (cellIndex < columnNames.length) {
-                                                    rowData[columnNames[cellIndex]] = $(cell).text().trim();
-                                                }
-                                            });
-
-                                            // Log the data*
-                                            console.log(clc.white(`         ${columnNames.filter(name => rowData[name]).map(name => `${name}: ${rowData[name]}`).join('\n         ')}`));
-                                            if (columnNames.some(name => rowData[name])) {
-                                                console.log(clc.white(`         ---`));
-                                            }
+ONLY OUTPUT JSON. NOT TEXT. Here's the HTML:\n\n${tableHtml}`;
+                                        const extractedData = await useLlamaAPI({
+                                            parts: [{ text: extractionPrompt }],
+                                            parseResponse: false
                                         });
+                        
+                                        // Log the extracted data
+                                        console.log(extractedData);
                                     } else {
                                         console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryLink.url}`));
                                     }
@@ -210,6 +306,9 @@ async function fetchAndLogFreeTVLinks(urls) {
                                     console.error(clc.red(`      ❌ Error fetching channel information for ${countryLink.url}: ${error.message}`));
                                 }
                             }
+                        
+                        
+                        
                         } else {
                             console.log(clc.yellow(`   ⚠️ No suitable table found for ${regionLink.text}`));
                         }
