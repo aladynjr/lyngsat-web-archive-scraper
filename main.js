@@ -4,6 +4,12 @@ const path = require('path');
 const url = require('url');
 const cheerio = require('cheerio');
 const clc = require('cli-color');
+require('dotenv').config();
+const HttpsProxyAgent = require('https-proxy-agent');
+
+const proxyUrl = process.env.PROXY_URL;
+const httpsAgent = new HttpsProxyAgent(proxyUrl);
+
 
 async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
     const waybackApiUrl = "http://web.archive.org/cdx/search/cdx";
@@ -21,7 +27,7 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
 
     try {
         console.log(clc.cyan(`\n📡 Fetching archived URLs for ${url}...\n`));
-        const response = await axios.get(waybackApiUrl, { params });
+        const response = await axios.get(waybackApiUrl, { params, httpsAgent });
         const data = response.data;
 
         if (data.length > 1) {
@@ -49,12 +55,12 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
 async function fetchAndLogFreeTVLinks(urls) {
     for (const baseUrl of urls) {
         console.log(clc.cyan(`\n🔍 Processing base URL: ${baseUrl}\n`));
-        
+
         try {
             // Step 1: Fetch the base URL
-            const response = await axios.get(baseUrl);
+            const response = await axios.get(baseUrl, { httpsAgent });
             const $ = cheerio.load(response.data);
-            
+
             // Step 2: Extract the "Free TV" URL
             let freeTvUrl = null;
             $('a').each((i, link) => {
@@ -66,29 +72,29 @@ async function fetchAndLogFreeTVLinks(urls) {
                     return false; // Break the loop once we find a match
                 }
             });
-            
+
             if (freeTvUrl) {
                 console.log(clc.green(`📺 Found Free TV URL: ${freeTvUrl}\n`));
-                
+
                 // Step 3: Fetch and process the Free TV page
-                const freeTvResponse = await axios.get(freeTvUrl);
+                const freeTvResponse = await axios.get(freeTvUrl, { httpsAgent });
                 const freeTv$ = cheerio.load(freeTvResponse.data);
-                
+
                 const regionLinks = [];
-                
+
                 freeTv$('b').each((i, bElement) => {
                     const $bElement = freeTv$(bElement);
                     const aElements = $bElement.find('a');
                     const bTextWithoutAnchors = $bElement.clone().children().remove().end().text().trim();
-                    
+
                     // Check if "Free" is in the text content of <b> or in the first anchor
                     const isFreePresentInB = bTextWithoutAnchors.includes('Free');
                     const isFreePresentInFirstAnchor = aElements.length > 0 && freeTv$(aElements[0]).text().trim().startsWith('Free');
-                    
+
                     if (aElements.length > 0 && (isFreePresentInB || isFreePresentInFirstAnchor)) {
                         const bText = $bElement.text().trim().replace(/\s+/g, ' ');
                         console.log(clc.yellow(`📌 Found b element: ${bText}`));
-                        
+
                         // Extract and log each anchor's text and href
                         aElements.each((j, aElement) => {
                             const $aElement = freeTv$(aElement);
@@ -98,7 +104,7 @@ async function fetchAndLogFreeTVLinks(urls) {
                             console.log(clc.magenta(`   🔗 Link ${j + 1}:`));
                             console.log(clc.magenta(`      Text: ${aText}`));
                             console.log(clc.magenta(`      URL: ${fullUrl}`));
-                            
+
                             // Add to regionLinks if it's not the "Free" link
                             if (!aText.startsWith('Free')) {
                                 regionLinks.push({ text: aText, url: fullUrl });
@@ -107,17 +113,17 @@ async function fetchAndLogFreeTVLinks(urls) {
                         console.log(); // Add a blank line for readability
                     }
                 });
-                
+
                 // Step 4: Process each region link
                 for (const regionLink of regionLinks) {
                     console.log(clc.blue(`\n🌎 Processing region: ${regionLink.text}`));
                     try {
-                        const regionResponse = await axios.get(regionLink.url);
+                        const regionResponse = await axios.get(regionLink.url, { httpsAgent });
                         const region$ = cheerio.load(regionResponse.data);
-                        
+
                         // Find all tables
                         const tables = region$('table').get().reverse();
-                        
+
                         // Find the first table from the bottom that meets all criteria
                         const targetTable = tables.find(table => {
                             const $table = region$(table);
@@ -126,23 +132,77 @@ async function fetchAndLogFreeTVLinks(urls) {
                             const hasAdvert = $table.find('a[href*="advert"]').length > 0;
                             const hasIElement = $table.find('i').length > 0;
                             const hasScriptTag = $table.find('script').length > 0;
-                            
-                            return rowCount > 4 && 
-                                   !tableText.includes('Advertisements') && 
-                                   !tableText.includes('News at') &&
-                                   !hasAdvert &&
-                                   !hasIElement &&
-                                   !hasScriptTag;
+
+                            return rowCount > 4 &&
+                                !tableText.includes('Advertisements') &&
+                                !tableText.includes('News at') &&
+                                !hasAdvert &&
+                                !hasIElement &&
+                                !hasScriptTag;
                         });
-                        
+
                         if (targetTable) {
-                            console.log(clc.green(`   📊 Found suitable table with ${region$(targetTable).find('tr').length} rows`));
-                            
-                            // Log table content
+                            console.log(clc.green(`   📊 Found suitable table with ${region$(targetTable).find('td').length} country rows`));
+
+                            // Log table content and extract anchor links
+                            const countryLinks = [];
                             region$(targetTable).find('tr').each((rowIndex, row) => {
-                                const rowContent = region$(row).find('td').map((_, cell) => region$(cell).text().trim()).get().join(' | ');
+                                const $row = region$(row);
+                                const rowContent = $row.find('td').map((_, cell) => region$(cell).text().trim()).get().join(' | ');
                                 console.log(clc.white(`      ${rowContent}`));
+
+                                // Extract anchor links
+                                $row.find('a').each((_, anchor) => {
+                                    const $anchor = region$(anchor);
+                                    const href = $anchor.attr('href');
+                                    const text = $anchor.text().trim();
+                                    if (href && text.trim()) {
+                                        const countryUrl = url.resolve(regionLink.url, href);
+                                        countryLinks.push({ text, url: countryUrl });
+                                    }
+                                });
                             });
+
+                            // Process each country link
+                            for (const countryLink of countryLinks) {
+                                console.log(clc.cyan(`         🔗 Country Link: ${countryLink.text} - ${countryLink.url}`));
+
+                                // Visit the country link and extract channel information
+                                try {
+                                    const response = await axios.get(countryLink.url, { httpsAgent });
+                                    const $ = cheerio.load(response.data);
+
+                                    // Find the table that contains "Channel Name" and "Position"
+                                    const targetTable = $('table').filter(function () {
+                                        return $(this).text().includes('Channel Name') && $(this).text().includes('Position');
+                                    }).first();
+
+                                    if (targetTable.length) {
+                                        console.log(clc.green(`      📡 Channel information for ${countryLink.url}:`));
+
+                                        // Extract and log the information from each row
+                                        targetTable.find('tr').each((index, row) => {
+                                            if (index === 0) return; // Skip the header row
+
+                                            const $row = $(row);
+                                            const channelName = $row.find('td:nth-child(2)').text().trim();
+                                            const position = $row.find('td:nth-child(3)').text().trim();
+                                            const satellite = $row.find('td:nth-child(4)').text().trim();
+                                            const beam = $row.find('td:nth-child(5)').text().trim();
+
+                                            console.log(clc.white(`         Channel: ${channelName}`));
+                                            console.log(clc.white(`         Position: ${position}`));
+                                            console.log(clc.white(`         Satellite: ${satellite}`));
+                                            console.log(clc.white(`         Beam: ${beam}`));
+                                            console.log(clc.white(`         ---`));
+                                        });
+                                    } else {
+                                        console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryLink.url}`));
+                                    }
+                                } catch (error) {
+                                    console.error(clc.red(`      ❌ Error fetching channel information for ${countryLink.url}: ${error.message}`));
+                                }
+                            }
                         } else {
                             console.log(clc.yellow(`   ⚠️ No suitable table found for ${regionLink.text}`));
                         }
@@ -156,11 +216,12 @@ async function fetchAndLogFreeTVLinks(urls) {
         } catch (error) {
             console.error(clc.red(`\n❌ Error processing ${baseUrl}: ${error.message}\n`));
         }
-        
+
         console.log(clc.cyan(`✅ Finished processing ${baseUrl}\n`));
         console.log(clc.blackBright('---------------------------------------------------'));
     }
 }
+
 
 
 
