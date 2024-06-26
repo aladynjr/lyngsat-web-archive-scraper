@@ -174,27 +174,34 @@ async function fetchAndLogFreeTVLinks(urls) {
 
                                     // Find the table that contains "Channel Name" and "Position"
                                     const targetTable = $('table').filter(function () {
-                                        return $(this).text().includes('Channel Name') && $(this).text().includes('Position');
+                                        return $(this).text().includes('Channel Name') && $(this).text().includes('Logo');
                                     }).first();
 
                                     if (targetTable.length) {
                                         console.log(clc.green(`      📡 Channel information for ${countryLink.url}:`));
 
                                         // Extract and log the information from each row
+                                        // Get column names from the header row
+                                        const columnNames = targetTable.find('tr:first-child td').map((_, cell) => $(cell).text().trim()).get();
+
                                         targetTable.find('tr').each((index, row) => {
                                             if (index === 0) return; // Skip the header row
 
                                             const $row = $(row);
-                                            const channelName = $row.find('td:nth-child(2)').text().trim();
-                                            const position = $row.find('td:nth-child(3)').text().trim();
-                                            const satellite = $row.find('td:nth-child(4)').text().trim();
-                                            const beam = $row.find('td:nth-child(5)').text().trim();
+                                            const rowData = {};
 
-                                            console.log(clc.white(`         Channel: ${channelName}`));
-                                            console.log(clc.white(`         Position: ${position}`));
-                                            console.log(clc.white(`         Satellite: ${satellite}`));
-                                            console.log(clc.white(`         Beam: ${beam}`));
-                                            console.log(clc.white(`         ---`));
+                                            // Populate rowData with column names and values
+                                            $row.find('td').each((cellIndex, cell) => {
+                                                if (cellIndex < columnNames.length) {
+                                                    rowData[columnNames[cellIndex]] = $(cell).text().trim();
+                                                }
+                                            });
+
+                                            // Log the data*
+                                            console.log(clc.white(`         ${columnNames.filter(name => rowData[name]).map(name => `${name}: ${rowData[name]}`).join('\n         ')}`));
+                                            if (columnNames.some(name => rowData[name])) {
+                                                console.log(clc.white(`         ---`));
+                                            }
                                         });
                                     } else {
                                         console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryLink.url}`));
