@@ -125,12 +125,14 @@ async function fetchAndLogFreeTVLinks(urls) {
                             const tableText = $table.text();
                             const hasAdvert = $table.find('a[href*="advert"]').length > 0;
                             const hasIElement = $table.find('i').length > 0;
+                            const hasScriptTag = $table.find('script').length > 0;
                             
                             return rowCount > 4 && 
                                    !tableText.includes('Advertisements') && 
                                    !tableText.includes('News at') &&
                                    !hasAdvert &&
-                                   !hasIElement;
+                                   !hasIElement &&
+                                   !hasScriptTag;
                         });
                         
                         if (targetTable) {
