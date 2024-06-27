@@ -7,81 +7,13 @@ const clc = require('cli-color');
 require('dotenv').config();
 const HttpsProxyAgent = require('https-proxy-agent');
 
-
-
-function getProxyUrl() {
-    const randomPort = Math.floor(Math.random() * (9100 - 9000 + 1)) + 9000;
+function getHttpsAgent() {
+    const randomPort = Math.floor(Math.random() * (9099 - 9000 + 1)) + 9000;
     const proxyUrl = process.env.PROXY_URL + randomPort;
     return new HttpsProxyAgent(proxyUrl);
 }
 
-const httpsAgent = getProxyUrl();
-
-
-
-async function useLlamaAPI({ parts = [{"text": "create a simple json object of imaginary data"}], parseResponse = true }) {
-    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-    const url = `https://openrouter.ai/api/v1/chat/completions`;
-  
-    const data = {
-      model: "meta-llama/llama-3-8b-instruct",
-      messages: parts.map(part => ({ role: "user", content: part.text.replace(/\n/g, " ") })),
-    };
-  
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error(`OpenRouter API returned an error: ${errorData.error.message}`);
-        throw new Error(errorData.error.message);
-      }
-  
-      const responseData = await response.json();
-      let content = responseData.choices[0].message.content;
-  
-      // Trim the content to remove code block markers
-      content = content.trim();
-      if (content.startsWith("```json")) {
-        content = content.slice(7).trim();
-      }
-      if (content.endsWith("```")) {
-        content = content.slice(0, -3).trim();
-      }
-  
-      if (parseResponse) {
-        try {
-          // Use regex to extract the JSON content
-          const jsonMatch = content.match(/\{[\s\S]*\}/);
-          if (jsonMatch) {
-            content = jsonMatch[0];
-          } else {
-            throw new Error("No valid JSON found in response content");
-          }
-        } catch (jsonError) {
-          console.error(`Failed to parse JSON content: ${jsonError.message}`);
-          throw new Error("Failed to parse JSON content");
-        }
-      }
-  
-      const parsedContent = parseResponse ? JSON.parse(content) : content;
-      console.log(parsedContent);
-      return parsedContent;
-  
-    } catch (error) {
-      console.error(`Error using OpenRouter API: ${error.message}`);
-      throw error;
-    }
-  }
-  
-  
+const httpsAgent = getHttpsAgent();
 
 async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
     const waybackApiUrl = "http://web.archive.org/cdx/search/cdx";
@@ -124,18 +56,6 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
     }
 }
 
-function logChannelInfo(channel) {
-    console.log(clc.white(Object.entries(channel)
-        .filter(([key, value]) => value && (typeof value === 'string' ? value.trim() : value))
-        .map(([key, value]) => {
-            if (Array.isArray(value)) {
-                return `         ${key}: ${value.join(', ')}`;
-            }
-            return `         ${key}: ${value}`;
-        })
-        .join('\n')));
-    console.log(clc.white('         ---'));
-}
 
 
 async function fetchAndLogFreeTVLinks(urls) {
@@ -265,40 +185,48 @@ async function fetchAndLogFreeTVLinks(urls) {
                                     if (targetTable.length) {
                                         console.log(clc.green(`      📡 Channel information for ${countryLink.url}:`));
                         
-                                        // Get the HTML of the target table
-                                        const tableHtml = targetTable.html();
+                                        // Get column names from the header row
+                                        const columnNames = targetTable.find('tr:first-child td').map((_, cell) => {
+                                            const text = $(cell).text().trim();
+                                            return text === '' ? 'Sat link' : text;
+                                        }).get();
                         
-                                        // Use LlamaAPI to extract data from the table
-                                        const extractionPrompt = `Extract the data from this HTML table into a JSON object. The table contains information about TV channels. Each channel can have multiple satellites and corresponding values in subsequent columns. Use arrays for all fields to accommodate multiple values. Here's an example of the expected format:
-
-data = {
-    "Aurora TV": {
-        "position": ["16.0°E"],
-        "satellite": ["Eutelsat 16A"],
-        "satellite_url": ["https://www.lyngsat.com/Eutelsat-16A.html"],
-        "beam": ["Europe B"],
-        "beam_url": ["https://www.lyngsat.com/maps/footprints/Eutelsat-16A-Europe-B.html"],
-        "eirp": [50],
-        "frequency_polarization": ["11512 H"],
-        "frequency_url": ["https://www.lyngsat.com/muxes/Eutelsat-16A_Europe-B_11512-H.html"],
-        "video_system": ["DVB-s2"],
-        "quality": ["SD"],
-        "sr_fec": ["30000"],
-        "lang": ["Hrv"],
-        "encryption": ["_"],
-        "package": ["_"],
-        "source": ["Wellikan 230428"]
-    }
-}
-
-ONLY OUTPUT JSON. NOT TEXT. Here's the HTML:\n\n${tableHtml}`;
-                                        const extractedData = await useLlamaAPI({
-                                            parts: [{ text: extractionPrompt }],
-                                            parseResponse: false
+                                        // Process each row (skip the header row)
+                                        let prevRowData = {};
+                                        targetTable.find('tr:not(:first-child)').each((_, row) => {
+                                            const rowData = {};
+                                            const $row = $(row);
+                                            const cellCount = $row.find('td').length;
+                        
+                                            $row.find('td').each((index, cell) => {
+                                                rowData[columnNames[index]] = $(cell).text().trim();
+                                            });
+                        
+                                            if (cellCount < columnNames.length) {
+                                                // Merge with previous row
+                                                const mergedData = { ...prevRowData };
+                                                Object.entries(rowData).forEach(([key, value], index) => {
+                                                    const mergeIndex = columnNames.length - cellCount + index;
+                                                    mergedData[columnNames[mergeIndex]] = 
+                                                        (mergedData[columnNames[mergeIndex]] ? mergedData[columnNames[mergeIndex]] + ', ' : '') + value;
+                                                });
+                                                
+                                                // Log the merged row data
+                                                console.log(clc.white(`         ${Object.entries(mergedData).map(([key, value]) => `${key}: ${value}`).join(', ')}`));
+                                                prevRowData = {};
+                                            } else {
+                                                if (Object.keys(prevRowData).length > 0) {
+                                                    // Log the previous row if it wasn't merged
+                                                    console.log(clc.white(`         ${Object.entries(prevRowData).map(([key, value]) => `${key}: ${value}`).join(', ')}`));
+                                                }
+                                                prevRowData = rowData;
+                                            }
                                         });
                         
-                                        // Log the extracted data
-                                        console.log(extractedData);
+                                        // Log the last row if it wasn't merged
+                                        if (Object.keys(prevRowData).length > 0) {
+                                            console.log(clc.white(`         ${Object.entries(prevRowData).map(([key, value]) => `${key}: ${value}`).join(', ')}`));
+                                        }
                                     } else {
                                         console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryLink.url}`));
                                     }
@@ -306,7 +234,6 @@ ONLY OUTPUT JSON. NOT TEXT. Here's the HTML:\n\n${tableHtml}`;
                                     console.error(clc.red(`      ❌ Error fetching channel information for ${countryLink.url}: ${error.message}`));
                                 }
                             }
-                        
                         
                         
                         } else {
