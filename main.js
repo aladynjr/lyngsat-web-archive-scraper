@@ -24,7 +24,8 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
         output: "json",
         fl: "timestamp,original",
         filter: ["statuscode:200"],
-        collapse: "timestamp:6"   // 1 capture per month
+       // collapse: "timestamp:6"   // 1 capture per month
+        collapse: "timestamp:4"   // 1 capture per month
     };
 
     try {
@@ -205,7 +206,7 @@ async function extractCountryLinks({ regionUrl }) {
                 });
             });
 
-            console.log(clc.cyan(`   Found ${countryLinks.length} country links for ${clc.white(`      ${rowContent.trim()}`)}`));
+            console.log(clc.cyan(`   Found ${countryLinks.length} country links for ${clc.white(`${rowContent.trim()}`)}`));
         } else {
             console.log(clc.yellow(`   ⚠️ No suitable table found for ${regionUrl}`));
         }
@@ -240,16 +241,15 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 const text = country$(cell).text().trim();
                 return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
             }).get();
-
+            console.log(columnNames)
             let mergedData = {};
 
-            function processCells($row, offset, maxIndex) {
+            function processCells($row, offset) {
                 $row.find('td').each((index, cell) => {
-                    if (index >= maxIndex) return;
                     const $cell = country$(cell);
                     const text = $cell.text().trim();
                     const $anchor = $cell.find('a');
-                    const columnName = columnNames[offset + index];
+                    const columnName = columnNames[offset + index] || `Column ${offset + index + 1}`;
 
                     if ($anchor.length) {
                         const href = $anchor.attr('href');
@@ -265,13 +265,14 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 });
             }
 
-            await Promise.all(channelTable.find('tr:not(:first-child)').map(async (_, row) => {
+            await Promise.all(channelTable.find('tr').map(async (_, row) => {
                 const $row = country$(row);
                 const cellCount = $row.find('td').length;
-
+                console.log('cellCount ' + cellCount)
+                console.log('columnNames.length ' + columnNames.length)
                 if (cellCount < columnNames.length) {
                     // Continuation row
-                    processCells($row, columnNames.length - cellCount, 3);
+                    processCells($row, columnNames.length - cellCount);
                 } else {
                     // New row
                     if (Object.keys(mergedData).length > 0) {
@@ -293,7 +294,7 @@ async function extractChannelsDataFromCountryPage({ country }) {
                         console.log(clc.white(`         ${JSON.stringify(mergedData)}`));
                         mergedData = {};
                     }
-                    processCells($row, 0, 2);
+                    processCells($row, 0);
                 }
             }));
 
@@ -325,7 +326,7 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 console.log(clc.white(`         ${JSON.stringify(mergedData)}`));
             }
         } else {
-            console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryUrl}`));
+            console.log(clc.yellow(`      ⚠️ No channel information table found `));
         }
     } catch (error) {
         console.error(clc.red(`      ❌ Error extracting channel data for ${countryUrl}: ${error.message}`));
@@ -454,15 +455,19 @@ async function main() {
     const fromDate = '20000101';  // Start date: January 1, 2000
     const toDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');  // End date: Today
     const outputFileName = path.join(__dirname, 'wayback_urls.json');
+   const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/free/Maldives.shtml', text : 'Maldives'}});
+  //  const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20160729231814/http://www.lyngsat.com/freetv/Australia.html', text : 'Maldives'}});
 
+return
+    const freeTvUrl = await getFreeTVUrl({ archiveUrl: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/' });
+    const regionLinks = await getRegionLinks({ freeTvUrl });
 
-    // const freeTvUrl = await getFreeTVUrl({ archiveUrl: 'http://web.archive.org/web/20240621040058/https://www.lyngsat.com/' });
-    // const regionLinks = await getRegionLinks({ freeTvUrl });
-    // const countryLinks = await extractCountryLinks({ regionUrl: regionLinks[0].url });
-    // const countryLinks = await extractCountryLinks({ regionUrl: 'http://web.archive.org/web/20240227140800/https://www.lyngsat.com/freetv/Australia.html' });
-    // const randomCountryLink = countryLinks[Math.floor(Math.random() * countryLinks.length)];
-    // const channelsData = await extractChannelsDataFromCountryPage({country : randomCountryLink});
-    const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20230331225103/https://www.lyngsat.com/freetv/Australia.html', text : 'Australia'}});
+    const countryLinks = await extractCountryLinks({ regionUrl: regionLinks[1].url });
+    const randomCountryLink = countryLinks[Math.floor(Math.random() * countryLinks.length)];
+
+    //const channelsData = await extractChannelsDataFromCountryPage({country : randomCountryLink});
+  
+  //  const countryLinks = await extractCountryLinks({ regionUrl: 'http://web.archive.org/web/20240227140800/https://www.lyngsat.com/freetv/Australia.html' });
 
 
 
@@ -474,7 +479,7 @@ async function main() {
         console.log(clc.yellow('📁 Wayback URLs file not found. Fetching archived URLs...\n'));
         await fetchArchivedUrlsForEachMonth(host, fromDate, toDate);
     }
-
+    return
     try {
         const fileContent = await fs.readFile(outputFileName, 'utf8');
         let urlsObject = JSON.parse(fileContent);
