@@ -77,7 +77,7 @@ const GEONODE_PORT = process.env.GEONODE_PORT || 9005
 
 
 const axiosInstance = axios.create({
-    timeout: 10000,
+    timeout: 15000,
     proxy: {
         protocol: 'http',
         host: GEONODE_DNS,
@@ -101,8 +101,7 @@ axiosRetry(axiosInstance, {
 
 // Set up Bottleneck
 const limiter = new Bottleneck({
-    maxConcurrent: 1,
-    minTime: 100, // 200 ms interval = 5 requests per second
+    maxConcurrent: 40, // 5 concurrent requests
 });
 
 
@@ -123,7 +122,8 @@ async function fetchPage(url) {
     try {
         const response = await limitedAxios.get(url);
         requestCount++;
-        console.log(clc.blackBright(`Requests sent: ${requestCount}`));
+        const dataSizeKB = Buffer.byteLength(response.data, 'utf8') / 1024;
+        console.log(clc.blackBright(`Requests sent: ${requestCount}, Response size: ${dataSizeKB.toFixed(2)} KB`));
         return cheerio.load(response.data);
     } catch (error) {
         console.error(clc.red(`Error fetching ${url}:`), error.message);
@@ -256,8 +256,7 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 !tableText.includes('Advertisements') &&
                 !tableText.includes('News at');
         }).first();
-       // console.log(clc.blue('      🔍 Channel Table HTML:'));
-       // console.log(channelTable.html());
+
         if (!channelTable.length) {
             console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryUrl}`));
             return [];
@@ -272,82 +271,6 @@ async function extractChannelsDataFromCountryPage({ country }) {
         console.log(columnNames)
         if (columnNames.length === 0) {
             throw new Error(`No columns found in the channel information table for ${countryUrl}`);
-        }
-        async function* processChannelRows(rows) {
-            let channelData = {};
-            let currentRow = null;
-
-            function processCells($row, offset) {
-                $row.find('td').each((index, cell) => {
-                    const $cell = country$(cell);
-                    const text = extractText($cell);
-                    const $anchor = $cell.find('a');
-                    const columnName = columnNames[offset + index] || `Column ${offset + index + 1}`;
-
-                    if ($anchor.length) {
-                        const href = $anchor.attr('href');
-                        const fullUrl = url.resolve(countryUrl, href);
-                        if (text || fullUrl) {
-                            if (channelData[columnName]) {
-                                if (typeof channelData[columnName] === 'object') {
-                                    channelData[columnName].text += `, ${text}`;
-                                    channelData[columnName].url = fullUrl;
-                                } else {
-                                    channelData[columnName] = {
-                                        text: `${channelData[columnName]}, ${text}`,
-                                        url: fullUrl
-                                    };
-                                }
-                            } else {
-                                channelData[columnName] = text ? { text, url: fullUrl } : fullUrl;
-
-                                if (fullUrl.includes("//www.lyngsat.com/tvchannels")) {
-                                    channelData.channel_page = fullUrl;
-                                }
-                            }
-                        }
-                    } else if (text) {
-                        if (channelData[columnName]) {
-                            if (typeof channelData[columnName] === 'object') {
-                                channelData[columnName].text += `, ${text}`;
-                            } else {
-                                channelData[columnName] += `, ${text}`;
-                            }
-                        } else {
-                            channelData[columnName] = text;
-                        }
-                    }
-                });
-            }
-
-            for (const row of rows) {
-                const $row = country$(row);
-                const cellCount = $row.find('td').length;
-
-
-                if (cellCount < columnNames.length) {
-                    // Continuation row
-                    processCells($row, columnNames.length - cellCount);
-                } else {
-                    // New row
-                    if (currentRow) {
-                        // Process the previous row if it exists
-                        const processedChannel = await processChannelData(channelData);
-                        yield processedChannel;
-                    }
-                    
-                    // Start a new channel
-                    channelData = {};
-                    currentRow = row;
-                    processCells($row, 0);
-                }
-            }
-
-            // Process the last row
-            if (currentRow) {
-                const processedChannel = await processChannelData(channelData);
-                yield processedChannel;
-            }
         }
 
         async function processChannelData(channelData) {
@@ -377,10 +300,67 @@ async function extractChannelsDataFromCountryPage({ country }) {
             return channelData;
         }
 
-        const channels = [];
-        for await (const channel of processChannelRows(channelTable.find('tr:not(:first-child)'))) {
-            channels.push(channel);
+        function processCells($row, offset, channelData) {
+            $row.find('td').each((index, cell) => {
+                const $cell = country$(cell);
+                const text = extractText($cell);
+                const $anchor = $cell.find('a');
+                const columnName = columnNames[offset + index] || `Column ${offset + index + 1}`;
+
+                if ($anchor.length) {
+                    const href = $anchor.attr('href');
+                    const fullUrl = url.resolve(countryUrl, href);
+                    if (text || fullUrl) {
+                        if (channelData[columnName]) {
+                            if (typeof channelData[columnName] === 'object') {
+                                channelData[columnName].text += `, ${text}`;
+                                channelData[columnName].url = fullUrl;
+                            } else {
+                                channelData[columnName] = {
+                                    text: `${channelData[columnName]}, ${text}`,
+                                    url: fullUrl
+                                };
+                            }
+                        } else {
+                            channelData[columnName] = text ? { text, url: fullUrl } : fullUrl;
+
+                            if (fullUrl.includes("//www.lyngsat.com/tvchannels")) {
+                                channelData.channel_page = fullUrl;
+                            }
+                        }
+                    }
+                } else if (text) {
+                    if (channelData[columnName]) {
+                        if (typeof channelData[columnName] === 'object') {
+                            channelData[columnName].text += `, ${text}`;
+                        } else {
+                            channelData[columnName] += `, ${text}`;
+                        }
+                    } else {
+                        channelData[columnName] = text;
+                    }
+                }
+            });
         }
+
+        const rows = channelTable.find('tr:not(:first-child)').toArray();
+        const promises = rows.map(async (row) => {
+            const $row = country$(row);
+            const cellCount = $row.find('td').length;
+
+            let channelData = {};
+            if (cellCount < columnNames.length) {
+                // Continuation row
+                processCells($row, columnNames.length - cellCount, channelData);
+            } else {
+                // New row
+                processCells($row, 0, channelData);
+            }
+
+            return processChannelData(channelData);
+        });
+
+        const channels = await Promise.all(promises);
 
         return channels;
 
@@ -389,6 +369,7 @@ async function extractChannelsDataFromCountryPage({ country }) {
         throw error;
     }
 }
+
 async function extractChannelDataFromChannelPage({ channelPageUrl }) {
     try {
         const $ = await fetchPage(channelPageUrl);
@@ -454,7 +435,7 @@ let totalCountries = 0;
 let totalChannels = 0;
 let errorCount = 0;
 
-let TEST_MODE = true
+let TEST_MODE = false
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const startTime = Date.now();
     const hostname = archiveUrl.match(/\/web\/(\d{14})/)[1];
@@ -462,8 +443,22 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const data = { [hostname]: { archiveUrl, regions: [] } };
 
     try {
-        const freeTvUrl = await getFreeTVUrl({ archiveUrl });
+        let freeTvUrl;
+        let attempts = 0;
+        const maxAttempts = 3;
+
+        while (!freeTvUrl && attempts < maxAttempts) {
+            freeTvUrl = await getFreeTVUrl({ archiveUrl });
+            attempts++;
+
+            if (!freeTvUrl && attempts < maxAttempts) {
+                console.log(clc.yellow(`⚠️ Attempt ${attempts} failed. Retrying...`));
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
+            }
+        }
+
         if (!freeTvUrl) {
+            console.log(clc.yellow(`⚠️ No Free TV URL found for ${archiveUrl} after ${maxAttempts} attempts`));
             data[hostname].freeTvUrl = null;
             return;
         }
@@ -552,8 +547,14 @@ async function main() {
     const fromDate = '20000101';  // Start date: January 1, 2000
     const toDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');  // End date: Today
     const outputFileName = path.join(__dirname, 'wayback_urls.json');
+    
+    
     /*
-      const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/free/Germany.shtml', text : 'Germany'}});
+    const startTime = Date.now();
+    const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20141220192121/http://www.lyngsat.com/freetv/Australia.html', text : 'Australia'}});
+    const endTime = Date.now();
+    console.log(`Execution time: ${((endTime - startTime) / 1000 / 60).toFixed(2)} minutes`);
+    return
   //const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20010614160931/http://www.lyngsat.com/free/China.shtml', text : 'Maldives'}});
     const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20160729231814/http://www.lyngsat.com/freetv/Australia.html', text : 'Maldives'}});
 
@@ -571,9 +572,11 @@ return
     return
     
     
-  */
-await extractChannelDataFromChannelPage({ channelPageUrl : 'http://web.archive.org/web/20141217221634/http://www.lyngsat.com/tvchannels/au/ABC-2-NSW.html' })
-return 
+    */
+ await extractChannelDataFromChannelPage({ channelPageUrl : 'http://web.archive.org/web/20141219215602/http://www.lyngsat.com/tvchannels/th/Shop-Thailand.html' })
+ return 
+
+
     try {
         await fs.access(outputFileName);
         console.log(clc.green('📁 Wayback URLs file already exists. Reading from file...\n'));
@@ -590,8 +593,12 @@ return
 
         console.log(clc.cyan(`\n🔎 Processing ${urls.length} URLs...\n`));
         for (const archiveUrl of urls) {
-
+            const startTime = Date.now();
             await scrapeLyngsatArchivedWebsite(archiveUrl);
+            const endTime = Date.now();
+            console.log(`Execution time: ${((endTime - startTime) / 1000 / 60).toFixed(2)} minutes`);
+console.log('##########################################################################')
+console.log('##########################################################################')
         }
     } catch (error) {
         console.error(clc.red('\n❌ Error reading or parsing the JSON file:'), error);

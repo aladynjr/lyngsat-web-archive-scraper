@@ -6,8 +6,10 @@
     "cheerio": "^1.0.0-rc.12",
     "cli-color": "^2.0.4",
     "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
     "hpagent": "^1.2.0",
     "https-proxy-agent": "^5.0.1",
-    "p-queue": "^6.6.2"
+    "p-queue": "^6.6.2",
+    "sanitize-filename": "^1.6.3"
   }
 }

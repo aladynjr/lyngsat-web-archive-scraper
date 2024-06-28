@@ -8,7 +8,7 @@ test.json
 wayback_urls2.json
 # Optional eslint cache
 .eslintcache
-
+test/
 # Optional REPL history
 .node_repl_history
 
