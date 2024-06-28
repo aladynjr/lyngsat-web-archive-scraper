@@ -218,11 +218,11 @@ async function extractCountryLinks({ regionUrl }) {
     return countryLinks;
 }
 
+
 async function extractChannelsDataFromCountryPage({ country }) {
     const countryUrl = country.url;
     const countryName = country.text;
     console.log(clc.cyan(`      🔗 Processing country page: ${countryName} |  ${countryUrl}`));
-    const channels = [];
 
     try {
         const country$ = await fetchPage(countryUrl);
@@ -234,106 +234,113 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 !tableText.includes('News at');
         }).first();
 
-        if (channelTable.length) {
-            console.log(clc.green(`      📡 Found channel information table for ${countryUrl}`));
+        if (!channelTable.length) {
+            console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryUrl}`));
+            return [];
+        }
 
-            const columnNames = channelTable.find('tr:first-child td').map((index, cell) => {
-                const text = country$(cell).text().trim();
-                return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
-            }).get();
-            console.log(columnNames)
-            let mergedData = {};
+        console.log(clc.green(`      📡 Found channel information table for ${countryUrl}`));
+
+        const columnNames = channelTable.find('tr:first-child td').map((index, cell) => {
+            const text = country$(cell).text().trim();
+            return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
+        }).get();
+
+        console.log(columnNames);
+
+        async function processChannelRow(row) {
+            let channelData = {};
 
             function processCells($row, offset) {
                 $row.find('td').each((index, cell) => {
                     const $cell = country$(cell);
-                    const text = $cell.text().trim();
+                    const text = extractText($cell);
                     const $anchor = $cell.find('a');
                     const columnName = columnNames[offset + index] || `Column ${offset + index + 1}`;
 
                     if ($anchor.length) {
                         const href = $anchor.attr('href');
                         const fullUrl = url.resolve(countryUrl, href);
-                        mergedData[columnName] = { text, url: fullUrl };
-
-                        if (fullUrl.includes("//www.lyngsat.com/tvchannels")) {
-                            mergedData.channel_page = fullUrl;
-                        }
-                    } else {
-                        mergedData[columnName] = mergedData[columnName] ? `${mergedData[columnName]}, ${text}` : text;
-                    }
-                });
-            }
-
-            await Promise.all(channelTable.find('tr').map(async (_, row) => {
-                const $row = country$(row);
-                const cellCount = $row.find('td').length;
-                console.log('cellCount ' + cellCount)
-                console.log('columnNames.length ' + columnNames.length)
-                if (cellCount < columnNames.length) {
-                    // Continuation row
-                    processCells($row, columnNames.length - cellCount);
-                } else {
-                    // New row
-                    if (Object.keys(mergedData).length > 0) {
-                        if (mergedData.channel_page && mergedData.channel_page.includes("//www.lyngsat.com/tvchannels")) {
-                            const additionalData = await extractChannelDataFromChannelPage({ channelPageUrl: mergedData.channel_page });
-                            if (additionalData && Object.keys(additionalData).length > 0) {
-                                mergedData.additional_data = additionalData;
-                            }
-
-                            // Remove unnecessary columns if `channel_page` is present
-                            Object.keys(mergedData).forEach(key => {
-                                if (!['Logo', 'Channel Name', 'channel_page', 'additional_data'].includes(key)) {
-                                    delete mergedData[key];
+                        if (text || fullUrl) {
+                            if (channelData[columnName]) {
+                                if (typeof channelData[columnName] === 'object') {
+                                    channelData[columnName].text += `, ${text}`;
+                                    channelData[columnName].url = fullUrl;
+                                } else {
+                                    channelData[columnName] = {
+                                        text: `${channelData[columnName]}, ${text}`,
+                                        url: fullUrl
+                                    };
                                 }
-                            });
-                            console.log(clc.green(`      ➕ Additional channel information from ${mergedData.channel_page}:`));
+                            } else {
+                                channelData[columnName] = text ? { text, url: fullUrl } : fullUrl;
+
+                                if (fullUrl.includes("//www.lyngsat.com/tvchannels")) {
+                                    channelData.channel_page = fullUrl;
+                                }
+                            }
                         }
-                        channels.push(mergedData);
-                        console.log(clc.white(`         ${JSON.stringify(mergedData)}`));
-                        mergedData = {};
-                    }
-                    processCells($row, 0);
-                }
-            }));
-
-            // Process the last row
-            if (Object.keys(mergedData).length > 0) {
-                if (mergedData.channel_page && mergedData.channel_page.includes("//www.lyngsat.com/tvchannels")) {
-                    const additionalData = await extractChannelDataFromChannelPage({ channelPageUrl: mergedData.channel_page });
-                    if (additionalData && Object.keys(additionalData).length > 0) {
-                        mergedData.additional_data = additionalData;
-                    }
-
-                    // Remove unnecessary columns if `channel_page` is present
-                    Object.keys(mergedData).forEach(key => {
-                        if (!['Logo', 'Channel Name', 'channel_page', 'additional_data'].includes(key)) {
-                            delete mergedData[key];
+                    } else if (text) {
+                        if (channelData[columnName]) {
+                            if (typeof channelData[columnName] === 'object') {
+                                channelData[columnName].text += `, ${text}`;
+                            } else {
+                                channelData[columnName] += `, ${text}`;
+                            }
+                        } else {
+                            channelData[columnName] = text;
                         }
-                    });
-                    console.log(clc.green(`      ➕ Additional channel information from ${mergedData.channel_page}:`));
-                }
-
-                // Fix for [object Object] issue
-                Object.keys(mergedData).forEach(key => {
-                    if (typeof mergedData[key] === 'object' && mergedData[key] !== null) {
-                        mergedData[key] = mergedData[key].hasOwnProperty('text') ? mergedData[key].text : JSON.stringify(mergedData[key]);
                     }
                 });
-
-                channels.push(mergedData);
-                console.log(clc.white(`         ${JSON.stringify(mergedData)}`));
             }
-        } else {
-            console.log(clc.yellow(`      ⚠️ No channel information table found `));
+
+            const $row = country$(row);
+            const cellCount = $row.find('td').length;
+            
+            if (cellCount < columnNames.length) {
+                // Continuation row
+                processCells($row, columnNames.length - cellCount);
+            } else {
+                // New row
+                processCells($row, 0);
+            }
+
+            if (channelData.channel_page && channelData.channel_page.includes("//www.lyngsat.com/tvchannels")) {
+                const additionalData = await extractChannelDataFromChannelPage({ channelPageUrl: channelData.channel_page });
+                if (additionalData && Object.keys(additionalData).length > 0) {
+                    channelData.additional_data = additionalData;
+                }
+
+                // Remove unnecessary columns if `channel_page` is present
+                Object.keys(channelData).forEach(key => {
+                    if (!['Logo', 'Channel Name', 'channel_page', 'additional_data'].includes(key)) {
+                        delete channelData[key];
+                    }
+                });
+                console.log(clc.green(`      ➕ Additional channel information from ${channelData.channel_page}:`));
+            }
+
+            // Fix for [object Object] issue
+            Object.keys(channelData).forEach(key => {
+                if (typeof channelData[key] === 'object' && channelData[key] !== null && key !== 'additional_data') {
+                    channelData[key] = channelData[key].hasOwnProperty('text') ? channelData[key].text : JSON.stringify(channelData[key]);
+                }
+            });
+
+            console.log(clc.white(`         ${JSON.stringify(channelData)}`));
+            return channelData;
         }
+
+        const channels = await Promise.all(
+            channelTable.find('tr:not(:first-child)').map(async (_, row) => processChannelRow(row)).get()
+        );
+
+        return channels;
+
     } catch (error) {
         console.error(clc.red(`      ❌ Error extracting channel data for ${countryUrl}: ${error.message}`));
         throw error;
     }
-
-    return channels;
 }
 
 async function extractChannelDataFromChannelPage({ channelPageUrl }) {
@@ -350,7 +357,6 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
             return null;
         }
 
-
         const rows = channelTable.find('tr');
         rows.each((_, row) => {
             const cellsWithText = $(row).find('td').filter((_, cell) => $(cell).text().trim() !== '');
@@ -366,7 +372,7 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
         const channelPageData = channelTable.find('tr').slice(1).map((_, row) => {
             const rowData = {};
             $(row).find('td').each((index, cell) => {
-                rowData[columnNames[index]] = $(cell).text().trim();
+                rowData[columnNames[index]] = extractText($(cell));
             });
             return rowData;
         }).get();
@@ -377,6 +383,26 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
         return { error: error.message };
     }
 }
+function extractText($element) {
+    // Replace <br> elements with spaces
+    $element.find('br').replaceWith(' ');
+    
+    // Use Cheerio's text() method to extract text content, ignoring HTML tags
+    let text = $element.text();
+    
+    // Replace non-breaking spaces with regular spaces
+    text = text.replace(/\u00a0/g, ' ');
+    
+    // Replace multiple spaces with a single space
+    text = text.replace(/\s+/g, ' ');
+    
+    // Trim leading and trailing whitespace
+    text = text.trim();
+    
+    return text;
+}
+
+
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const hostname = new URL(archiveUrl).hostname;
     console.log(clc.cyan(`\n🔍 Processing archive URL: ${archiveUrl}\n`));
@@ -455,8 +481,9 @@ async function main() {
     const fromDate = '20000101';  // Start date: January 1, 2000
     const toDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');  // End date: Today
     const outputFileName = path.join(__dirname, 'wayback_urls.json');
-   const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/free/Maldives.shtml', text : 'Maldives'}});
-  //  const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20160729231814/http://www.lyngsat.com/freetv/Australia.html', text : 'Maldives'}});
+  //const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20010614160931/http://www.lyngsat.com/free/China.shtml', text : 'Maldives'}});
+ //  const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20010118223900/http://www2.lyngsat.com:80/free/Maldives.shtml', text : 'Maldives'}});
+    const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20160729231814/http://www.lyngsat.com/freetv/Australia.html', text : 'Maldives'}});
 
 return
     const freeTvUrl = await getFreeTVUrl({ archiveUrl: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/' });
