@@ -246,10 +246,9 @@ async function extractChannelsDataFromCountryPage({ country }) {
             return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
         }).get();
 
-        console.log(columnNames);
-
-        async function processChannelRow(row) {
+        async function* processChannelRows(rows) {
             let channelData = {};
+            let currentRow = null;
 
             function processCells($row, offset) {
                 $row.find('td').each((index, cell) => {
@@ -294,17 +293,39 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 });
             }
 
-            const $row = country$(row);
-            const cellCount = $row.find('td').length;
-            
-            if (cellCount < columnNames.length) {
-                // Continuation row
-                processCells($row, columnNames.length - cellCount);
-            } else {
-                // New row
-                processCells($row, 0);
+            for (const row of rows) {
+                const $row = country$(row);
+                const cellCount = $row.find('td').length;
+
+                console.log('cellCount ' + cellCount + ' < ' + columnNames.length + ' columnNames.length');
+
+                if (cellCount < columnNames.length) {
+                    console.log('merging..');
+                    // Continuation row
+                    processCells($row, columnNames.length - cellCount);
+                } else {
+                    // New row
+                    if (currentRow) {
+                        // Process the previous row if it exists
+                        const processedChannel = await processChannelData(channelData);
+                        yield processedChannel;
+                    }
+                    
+                    // Start a new channel
+                    channelData = {};
+                    currentRow = row;
+                    processCells($row, 0);
+                }
             }
 
+            // Process the last row
+            if (currentRow) {
+                const processedChannel = await processChannelData(channelData);
+                yield processedChannel;
+            }
+        }
+
+        async function processChannelData(channelData) {
             if (channelData.channel_page && channelData.channel_page.includes("//www.lyngsat.com/tvchannels")) {
                 const additionalData = await extractChannelDataFromChannelPage({ channelPageUrl: channelData.channel_page });
                 if (additionalData && Object.keys(additionalData).length > 0) {
@@ -331,9 +352,10 @@ async function extractChannelsDataFromCountryPage({ country }) {
             return channelData;
         }
 
-        const channels = await Promise.all(
-            channelTable.find('tr:not(:first-child)').map(async (_, row) => processChannelRow(row)).get()
-        );
+        const channels = [];
+        for await (const channel of processChannelRows(channelTable.find('tr:not(:first-child)'))) {
+            channels.push(channel);
+        }
 
         return channels;
 
@@ -342,7 +364,6 @@ async function extractChannelsDataFromCountryPage({ country }) {
         throw error;
     }
 }
-
 async function extractChannelDataFromChannelPage({ channelPageUrl }) {
     try {
         const $ = await fetchPage(channelPageUrl);
@@ -404,9 +425,8 @@ function extractText($element) {
 
 
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
-    const hostname = new URL(archiveUrl).hostname;
+    const hostname = archiveUrl.match(/\/web\/(\d{14})/)[1];
     console.log(clc.cyan(`\n🔍 Processing archive URL: ${archiveUrl}\n`));
-
     const data = { [hostname]: { archiveUrl, regions: [] } };
 
     try {
@@ -422,13 +442,13 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
 
         const queue = new PQueue({ concurrency: 30 });
 
-        await queue.addAll(regionLinks.slice(0, 2).map(regionLink => async () => {
+        await queue.addAll(regionLinks.slice(0, 10).map(regionLink => async () => {
             const regionData = { name: regionLink.text, url: regionLink.url, countries: [] };
 
             try {
-                const countryLinks = await extractCountryLinks(regionLink.url);
+                const countryLinks = await extractCountryLinks({regionUrl :regionLink.url});
 
-                await Promise.all(countryLinks.slice(0, 1).map(async countryLink => {
+                await Promise.all(countryLinks.slice(0, 10).map(async countryLink => {
                     console.log(clc.cyan(`         🔗 Country Link: ${countryLink.text} - ${countryLink.url}`));
                     const countryData = { name: countryLink.text, url: countryLink.url, channels: [] };
 
@@ -457,8 +477,9 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
 
     console.log(clc.cyan(`✅ Finished processing ${archiveUrl}\n`));
     const outputData = JSON.stringify(data, null, 2);
-    const outputPath = path.join(__dirname, `${hostname}${new Date().toISOString().slice(0, 10)}.json`);
-
+    const dataFolder = path.join(__dirname, 'data');
+    await fs.mkdir(dataFolder, { recursive: true });
+    const outputPath = path.join(dataFolder, `${hostname}${new Date().toISOString().slice(0, 10)}.json`);
     try {
         await fs.writeFile(outputPath, outputData);
         console.log(clc.green(`✅ Data saved successfully to ${outputPath}`));
@@ -481,8 +502,9 @@ async function main() {
     const fromDate = '20000101';  // Start date: January 1, 2000
     const toDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');  // End date: Today
     const outputFileName = path.join(__dirname, 'wayback_urls.json');
+    /*
+      const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20000229043304/http://www2.lyngsat.com:80/free/Germany.shtml', text : 'Germany'}});
   //const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20010614160931/http://www.lyngsat.com/free/China.shtml', text : 'Maldives'}});
- //  const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20010118223900/http://www2.lyngsat.com:80/free/Maldives.shtml', text : 'Maldives'}});
     const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20160729231814/http://www.lyngsat.com/freetv/Australia.html', text : 'Maldives'}});
 
 return
@@ -492,13 +514,13 @@ return
     const countryLinks = await extractCountryLinks({ regionUrl: regionLinks[1].url });
     const randomCountryLink = countryLinks[Math.floor(Math.random() * countryLinks.length)];
 
+    
+    //  const countryLinks = await extractCountryLinks({ regionUrl: 'http://web.archive.org/web/20240227140800/https://www.lyngsat.com/freetv/Australia.html' });
     //const channelsData = await extractChannelsDataFromCountryPage({country : randomCountryLink});
-  
-  //  const countryLinks = await extractCountryLinks({ regionUrl: 'http://web.archive.org/web/20240227140800/https://www.lyngsat.com/freetv/Australia.html' });
-
-
 
     return
+  */
+
     try {
         await fs.access(outputFileName);
         console.log(clc.green('📁 Wayback URLs file already exists. Reading from file...\n'));
@@ -506,7 +528,8 @@ return
         console.log(clc.yellow('📁 Wayback URLs file not found. Fetching archived URLs...\n'));
         await fetchArchivedUrlsForEachMonth(host, fromDate, toDate);
     }
-    return
+    
+    
     try {
         const fileContent = await fs.readFile(outputFileName, 'utf8');
         let urlsObject = JSON.parse(fileContent);
