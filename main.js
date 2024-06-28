@@ -9,6 +9,7 @@ const HttpsProxyAgent = require('https-proxy-agent');
 const { default: PQueue } = require('p-queue');
 const axios = require('axios');
 const axiosRetry = require('axios-retry').default;
+var Bottleneck = require("bottleneck/es5");
 
 
 
@@ -98,17 +99,37 @@ axiosRetry(axiosInstance, {
     },
 });
 
+// Set up Bottleneck
+const limiter = new Bottleneck({
+    maxConcurrent: 1,
+    minTime: 100, // 200 ms interval = 5 requests per second
+});
+
+
+// Wrap the Axios instance with the rate limiter
+const limitedGet = limiter.wrap(axiosInstance.get.bind(axiosInstance));
+const limitedPost = limiter.wrap(axiosInstance.post.bind(axiosInstance));
+const limitedAxios = {
+    get: limitedGet,
+    post: limitedPost,
+    // You can add other methods if needed
+};
+
 
 let requestCount = 0; // Initialize request count
 
 
 async function fetchPage(url) {
-    const response = await axiosInstance.get(url);
-    requestCount++;
-    console.log(clc.blackBright(`Requests sent: ${requestCount}`));
-    return cheerio.load(response.data);
+    try {
+        const response = await limitedAxios.get(url);
+        requestCount++;
+        console.log(clc.blackBright(`Requests sent: ${requestCount}`));
+        return cheerio.load(response.data);
+    } catch (error) {
+        console.error(clc.red(`Error fetching ${url}:`), error.message);
+        throw error;
+    }
 }
-
 
 
 async function getFreeTVUrl({ archiveUrl }) {
@@ -231,9 +252,12 @@ async function extractChannelsDataFromCountryPage({ country }) {
             const tableText = country$(this).text();
             return tableText.includes('Channel Name') &&
                 tableText.includes('Logo') &&
+                !tableText.includes('Advertising') && 
+                !tableText.includes('Advertisements') &&
                 !tableText.includes('News at');
         }).first();
-
+       // console.log(clc.blue('      🔍 Channel Table HTML:'));
+       // console.log(channelTable.html());
         if (!channelTable.length) {
             console.log(clc.yellow(`      ⚠️ No channel information table found for ${countryUrl}`));
             return [];
@@ -245,7 +269,10 @@ async function extractChannelsDataFromCountryPage({ country }) {
             const text = country$(cell).text().trim();
             return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
         }).get();
-
+        console.log(columnNames)
+        if (columnNames.length === 0) {
+            throw new Error(`No columns found in the channel information table for ${countryUrl}`);
+        }
         async function* processChannelRows(rows) {
             let channelData = {};
             let currentRow = null;
@@ -297,10 +324,8 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 const $row = country$(row);
                 const cellCount = $row.find('td').length;
 
-                console.log('cellCount ' + cellCount + ' < ' + columnNames.length + ' columnNames.length');
 
                 if (cellCount < columnNames.length) {
-                    console.log('merging..');
                     // Continuation row
                     processCells($row, columnNames.length - cellCount);
                 } else {
@@ -370,7 +395,8 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
         const channelTable = $('table').filter((_, table) => {
             const tableText = $(table).text();
             return tableText.includes('Position') && tableText.includes('Satellite') &&
-                !tableText.includes('Colour legend') && !tableText.includes('News at');
+                !tableText.includes('Colour legend') && !tableText.includes('News at') &&
+                !tableText.includes('google_ad') && !tableText.includes('Advertisements');
         }).first();
 
         if (!channelTable.length) {
@@ -381,7 +407,8 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
         const rows = channelTable.find('tr');
         rows.each((_, row) => {
             const cellsWithText = $(row).find('td').filter((_, cell) => $(cell).text().trim() !== '');
-            if (cellsWithText.length <= 2) {
+
+            if (cellsWithText.length <= 2 || $(row).text().includes('lyngsat.com')) {
                 $(row).remove();
             }
         });
@@ -389,6 +416,7 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
         const columnNames = channelTable.find('tr').first().find('td').map((_, cell) =>
             $(cell).text().trim().replace(/\s+/g, ' ') || `Empty ${_}`
         ).get();
+        console.log(columnNames)
 
         const channelPageData = channelTable.find('tr').slice(1).map((_, row) => {
             const rowData = {};
@@ -397,7 +425,7 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
             });
             return rowData;
         }).get();
-
+        console.log(channelPageData)
         return channelPageData;
     } catch (error) {
         console.error(clc.red(`      ❌ Error fetching additional channel information from ${channelPageUrl}: ${error.message}`));
@@ -405,26 +433,30 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
     }
 }
 function extractText($element) {
-    // Replace <br> elements with spaces
     $element.find('br').replaceWith(' ');
     
-    // Use Cheerio's text() method to extract text content, ignoring HTML tags
     let text = $element.text();
     
-    // Replace non-breaking spaces with regular spaces
     text = text.replace(/\u00a0/g, ' ');
     
-    // Replace multiple spaces with a single space
     text = text.replace(/\s+/g, ' ');
     
-    // Trim leading and trailing whitespace
     text = text.trim();
     
     return text;
 }
 
 
+
+
+
+let totalCountries = 0;
+let totalChannels = 0;
+let errorCount = 0;
+
+let TEST_MODE = true
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
+    const startTime = Date.now();
     const hostname = archiveUrl.match(/\/web\/(\d{14})/)[1];
     console.log(clc.cyan(`\n🔍 Processing archive URL: ${archiveUrl}\n`));
     const data = { [hostname]: { archiveUrl, regions: [] } };
@@ -440,25 +472,27 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
 
         const regionLinks = await getRegionLinks({ freeTvUrl });
 
-        const queue = new PQueue({ concurrency: 30 });
+        const queue = new PQueue({ concurrency: 1000 });
 
-        await queue.addAll(regionLinks.slice(0, 10).map(regionLink => async () => {
+        await queue.addAll((TEST_MODE ? regionLinks.slice(0, 2) : regionLinks).map(regionLink => async () => {
             const regionData = { name: regionLink.text, url: regionLink.url, countries: [] };
 
             try {
-                const countryLinks = await extractCountryLinks({regionUrl :regionLink.url});
+                const countryLinks = await extractCountryLinks({regionUrl: regionLink.url});
 
-                await Promise.all(countryLinks.slice(0, 10).map(async countryLink => {
+                await Promise.all((TEST_MODE ? countryLinks.slice(0, 2) : countryLinks).map(async countryLink => {
                     console.log(clc.cyan(`         🔗 Country Link: ${countryLink.text} - ${countryLink.url}`));
                     const countryData = { name: countryLink.text, url: countryLink.url, channels: [] };
 
                     try {
-                        // Use the refactored function here
-                        const channels = await extractChannelsDataFromCountryPage({country : countryLink});
+                        const channels = await extractChannelsDataFromCountryPage({country: countryLink});
                         countryData.channels = channels;
+                        totalCountries++;
+                        totalChannels += channels.length;
                     } catch (error) {
                         console.error(clc.red(`      ❌ Error fetching channel information for ${countryLink.url}: ${error.message}`));
                         countryData.error = error.message;
+                        errorCount++;
                     }
 
                     regionData.countries.push(countryData);
@@ -466,6 +500,7 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
             } catch (error) {
                 console.error(clc.red(`   ❌ Error processing ${regionLink.text}: ${error.message}`));
                 regionData.error = error.message;
+                errorCount++;
             }
 
             data[hostname].regions.push(regionData);
@@ -473,7 +508,18 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     } catch (error) {
         console.error(clc.red(`\n❌ Error processing ${archiveUrl}: ${error.message}\n`));
         data[hostname].error = error.message;
+        errorCount++;
     }
+
+    const endTime = Date.now();
+    const executionTime = (endTime - startTime) / 1000; // Convert to seconds
+
+    // Add the new fields to the result
+    data[hostname].totalCountries = totalCountries;
+    data[hostname].totalChannels = totalChannels;
+    data[hostname].errorCount = errorCount;
+    data[hostname].totalRequests = requestCount;
+    data[hostname].executionTimeSeconds = executionTime;
 
     console.log(clc.cyan(`✅ Finished processing ${archiveUrl}\n`));
     const outputData = JSON.stringify(data, null, 2);
@@ -485,9 +531,13 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
         console.log(clc.green(`✅ Data saved successfully to ${outputPath}`));
     } catch (error) {
         console.error(clc.red(`❌ Error saving data to file: ${error.message}`));
+    } finally{
+    // Reset request count
+    requestCount = 0;
     }
     console.log(clc.blackBright('---------------------------------------------------'));
 }
+
 
 
 
@@ -519,8 +569,11 @@ return
     //const channelsData = await extractChannelsDataFromCountryPage({country : randomCountryLink});
 
     return
+    
+    
   */
-
+await extractChannelDataFromChannelPage({ channelPageUrl : 'http://web.archive.org/web/20141217221634/http://www.lyngsat.com/tvchannels/au/ABC-2-NSW.html' })
+return 
     try {
         await fs.access(outputFileName);
         console.log(clc.green('📁 Wayback URLs file already exists. Reading from file...\n'));

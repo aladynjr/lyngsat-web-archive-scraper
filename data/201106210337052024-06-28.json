@@ -1,0 +1,713 @@
+{
+  "20110621033705": {
+    "archiveUrl": "http://web.archive.org/web/20110621033705/http://www.lyngsat.com/",
+    "regions": [
+      {
+        "name": "Pacific",
+        "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/Pacific.html",
+        "countries": [
+          {
+            "name": "French Polynesia",
+            "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/French-Polynesia.html",
+            "channels": [
+              {
+                "Logo": "http://web.archive.org/web/20110622015129/http://www.lyngsat-logo.com/tvcountry/fr_1.html",
+                "Channel Name": "Polyn�sie 1�re",
+                "Satellite": "Intelsat 701",
+                "Position": "180.0�E",
+                "Beam": "Spot 3",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015129/http://www.lyngsat-logo.com/tvcountry/pf_1.html",
+                "Channel Name": "Tahiti Nui TV",
+                "Empty 3": "http://web.archive.org/web/20110622015129/http://www.lyngsat-address.com/tt/TNTV-Tahiti.html",
+                "Satellite": "Intelsat 701, Intelsat 701",
+                "Position": "180.0�E, 180.0�E",
+                "Beam": "Spot 3, Spot 3",
+                "EIRP (dBW)": "0, 0"
+              }
+            ]
+          },
+          {
+            "name": "Australia",
+            "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/Australia.html",
+            "channels": [
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 NSW",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 NT",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-Northern.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 Queensland",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-Queensland.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 SA",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-South.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 Victoria",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-Victoria.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 1 WA",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-Western.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 NSW",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 NT",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 Queensland",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 SA",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 Victoria",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 2 WA",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-2-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "ABC 3",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ABC-3-AU.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NA",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Arabic Network of Australia",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/ANA-Arabic-Net-AU.html",
+                "Satellite": "Intelsat 8",
+                "Position": "166.0�E",
+                "Beam": "Australia",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Australia Network Asia",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/Australia-Network.html",
+                "Satellite": "Intelsat 8",
+                "Position": "166.0�E",
+                "Beam": "Pacific",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Australia Network Pacific",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/Australia-Network.html",
+                "Satellite": "Intelsat 5",
+                "Position": "169.0�E",
+                "Beam": "Pacific"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/mk_1.html",
+                "Channel Name": "Best of Macedonia",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/BOM-Best-of-MK.html",
+                "Satellite": "Eutelsat Sesat 1",
+                "Position": "16.0�E",
+                "Beam": "Fixed"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Boomerang Australia",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ab/Boomerang-Aus.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "Channel Nine",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Expo Channel",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/df/EXPO-Channel-AUS.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Foxtel Digital Help",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/df/Foxtel-Aus.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "GEM",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/gk/GEM-Channel-AU.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Go!",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/gk/GO-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/lb_1.html",
+                "Channel Name": "LBC Australia",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ln/LBC-Sat-Australia.html",
+                "Satellite": "Intelsat 8, Eutelsat W6",
+                "Position": "166.0�E, 21.6�E",
+                "Beam": "Australia, Wide",
+                "EIRP (dBW)": "0, 0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "National Indigenous TV",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ln/NITV-National-Indigenous-Television.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NA",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "Satellite Community TV",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SCTV-AUS.html",
+                "Satellite": "Optus D2",
+                "Position": "152.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS One Adelaide",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-TV.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS One Brisbane",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-TV.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS One Perth",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-TV.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS One South East",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-TV.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS One Tasmania",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-TV.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS Two Adelaide",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-2-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS Two Brisbane",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-2-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS Two Perth",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-2-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS Two South East",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-2-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "SBS Two Tasmania",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/ss/SBS-2-AUS.html",
+                "Satellite": "Optus D1",
+                "Position": "160.0�E",
+                "Beam": "NANZ",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "TVSN",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/tt/TVSN.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NB",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622000130/http://www.lyngsat-logo.com/tvcountry/au_1.html",
+                "Channel Name": "VAST Information Channel",
+                "Empty 3": "http://web.archive.org/web/20110622000130/http://www.lyngsat-address.com/uz/VAST-Info.html",
+                "Satellite": "Optus C1",
+                "Position": "156.0�E",
+                "Beam": "NA",
+                "EIRP (dBW)": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Asia",
+        "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/Asia.html",
+        "countries": [
+          {
+            "name": "Afghanistan",
+            "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/Afghanistan.html",
+            "channels": [
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "1TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/uz/1TV-Media.html",
+                "Satellite": "Express AM22",
+                "Position": "53.0�E",
+                "Beam": "S1",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "Afghan TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-stream.com/tvcountry/Afghanistan.html",
+                "Satellite": "Hot Bird 9",
+                "Position": "13.0�E",
+                "Beam": "Europe",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Ariana TV Network International",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ab/Ariana-TV-Net-Int.html",
+                "Satellite": "Insat 3A, Hot Bird 6, Galaxy 19",
+                "Position": "93.5�E, 13.0�E, 97.0�W",
+                "Beam": "ECC, Europe, Ku",
+                "EIRP (dBW)": "0, 0, 46.5-49.5"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Ariana TV Network National",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ab/Ariana-TV-Net.html",
+                "Satellite": "Insat 3A",
+                "Position": "93.5�E",
+                "Beam": "ECC",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Arzu TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ab/Arzu-TV.html",
+                "Satellite": "T�rksat 3A",
+                "Position": "42.0�E",
+                "Beam": "East",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Lemar TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ln/Lemar-TV.html",
+                "Satellite": "Express AM22",
+                "Position": "53.0�E",
+                "Beam": "S1",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Noor TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ln/Noor-TV-AF.html",
+                "Satellite": "Express AM22",
+                "Position": "53.0�E",
+                "Beam": "S1",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "Rah-e-Farda",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/or/Rah-e-Farda.html",
+                "Satellite": "T�rksat 2A",
+                "Position": "42.0�E",
+                "Beam": "East",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "RTA",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/or/RTA-Afghanistan.html",
+                "Satellite": "Insat 3A, Hot Bird 9, Galaxy 19",
+                "Position": "93.5�E, 13.0�E, 97.0�W",
+                "Beam": "ECC, Europe, Ku",
+                "EIRP (dBW)": "0, 0, 46.5-49.5"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Saba TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ss/Saba-TV.html",
+                "Satellite": "Yamal 202",
+                "Position": "49.0�E",
+                "Beam": "Global",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Saba World",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ss/Saba-World.html",
+                "Satellite": "Yamal 202",
+                "Position": "49.0�E",
+                "Beam": "Global",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Shamshad TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/ss/Shamshad-TV.html",
+                "Satellite": "AsiaSat 3S",
+                "Position": "105.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Tamadon TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/tt/Tamadon-TV.html",
+                "Satellite": "AsiaSat 3S",
+                "Position": "105.5�E",
+                "Beam": "South Asia",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Tolo News",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/tt/Tolo-News.html",
+                "Satellite": "Express AM22",
+                "Position": "53.0�E",
+                "Beam": "S1",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015102/http://www.lyngsat-logo.com/tvcountry/af_1.html",
+                "Channel Name": "Tolo TV",
+                "Empty 3": "http://web.archive.org/web/20110622015102/http://www.lyngsat-address.com/tt/Tolo-TV.html",
+                "Satellite": "Express AM22",
+                "Position": "53.0�E",
+                "Beam": "S1",
+                "EIRP (dBW)": "0"
+              }
+            ]
+          },
+          {
+            "name": "Bangladesh",
+            "url": "http://web.archive.org/web/20110621234232/http://www.lyngsat.com/freetv/Bangladesh.html",
+            "channels": [
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/us_1.html",
+                "Channel Name": "ATN Bangla",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/ATN-Bangla.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/us_1.html",
+                "Channel Name": "ATN Bangla UK",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/ATN-Bangla.html",
+                "Satellite": "Eurobird 1",
+                "Position": "28.5�E",
+                "Beam": "Fixed",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "ATN News",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Bangla Vision",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/Banglavision.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Boishakhi TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/Boishakhi.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "BTV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/BTV-Bangladesh.html",
+                "Satellite": "AsiaSat 3S",
+                "Position": "105.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "BTV World",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ab/BTV-World.html",
+                "Satellite": "AsiaSat 3S",
+                "Position": "105.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Channel 9",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/cc/Channel-9-BD.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Channel I",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/cc/Channel-I.html",
+                "Satellite": "Apstar 2R, Eurobird 1",
+                "Position": "76.5�E, 28.5�E",
+                "Beam": "C, Fixed",
+                "EIRP (dBW)": "0, 0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Desh TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/df/Desh-TV.html",
+                "Satellite": "Apstar 2R, Eurobird 1",
+                "Position": "76.5�E, 28.5�E",
+                "Beam": "C, Fixed",
+                "EIRP (dBW)": "0, 0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Diganta TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/df/Diganta-TV.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/uk_1.html",
+                "Channel Name": "Ekushey TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/df/Ekushey-TV.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Independent TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/gk/Independent-TV-BD.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Islamic TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/gk/Islamic-TV-BD.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Mohona TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ln/Mohona-TV.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "My TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ln/My-TV-Bangla.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "NTV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ln/NTV-Bangla.html",
+                "Satellite": "Apstar 2R, Eurobird 1",
+                "Position": "76.5�E, 28.5�E",
+                "Beam": "C, Fixed",
+                "EIRP (dBW)": "0, 0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "RTV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/or/RTV-Bangla.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Channel Name": "Sangsad Bangladesh TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ss/Sangsad-BTV.html",
+                "Satellite": "AsiaSat 3S",
+                "Position": "105.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              },
+              {
+                "Logo": "http://web.archive.org/web/20110622015113/http://www.lyngsat-logo.com/tvcountry/bd_1.html",
+                "Channel Name": "Somoy News TV",
+                "Empty 3": "http://web.archive.org/web/20110622015113/http://www.lyngsat-address.com/ss/Somoy-News.html",
+                "Satellite": "Apstar 2R",
+                "Position": "76.5�E",
+                "Beam": "C",
+                "EIRP (dBW)": "0"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "freeTvUrl": "http://web.archive.org/web/20110621033705/http://www.lyngsat.com/freetv/index.html",
+    "totalCountries": 4,
+    "totalChannels": 75,
+    "errorCount": 0,
+    "totalRequests": 8,
+    "executionTimeSeconds": 10.27
+  }
+}

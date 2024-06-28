@@ -5,6 +5,7 @@ test.html
 # Optional npm cache directory
 .npm
 test.json 
+wayback_urls2.json
 # Optional eslint cache
 .eslintcache
 
