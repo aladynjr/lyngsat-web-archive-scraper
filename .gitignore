@@ -89,5 +89,3 @@ Thumbs.db
 *.swo
 *.sublime-workspace
 
-# Project specific
-wayback_urls.json

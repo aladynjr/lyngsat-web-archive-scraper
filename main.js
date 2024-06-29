@@ -12,6 +12,28 @@ const axiosRetry = require('axios-retry').default;
 var Bottleneck = require("bottleneck/es5");
 
 
+async function isArchiveSufficientlyProcessed(hostname) {
+    const dataFolder = path.join(__dirname, 'data');
+    const filePath = path.join(dataFolder, `${hostname}.json`);
+
+    try {
+        const fileContent = await fs.readFile(filePath, 'utf8');
+        const data = JSON.parse(fileContent);
+        const archiveData = data[hostname];
+
+        if (archiveData.totalCountries > 50) {
+            const errorPercentage = (archiveData.errorCount / archiveData.totalRequests) * 100;
+            if (errorPercentage < 20) {
+                return true;
+            }
+        }
+    } catch (error) {
+        // File doesn't exist or couldn't be read, so it hasn't been processed
+        return false;
+    }
+
+    return false;
+}
 
 
 async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
@@ -25,7 +47,7 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
         output: "json",
         fl: "timestamp,original",
         filter: ["statuscode:200"],
-       // collapse: "timestamp:6"   // 1 capture per month
+        // collapse: "timestamp:6"   // 1 capture per month
         collapse: "timestamp:4"   // 1 capture per month
     };
 
@@ -252,7 +274,7 @@ async function extractChannelsDataFromCountryPage({ country }) {
             const tableText = country$(this).text();
             return tableText.includes('Channel Name') &&
                 tableText.includes('Logo') &&
-                !tableText.includes('Advertising') && 
+                !tableText.includes('Advertising') &&
                 !tableText.includes('Advertisements') &&
                 !tableText.includes('News at');
         }).first();
@@ -268,6 +290,8 @@ async function extractChannelsDataFromCountryPage({ country }) {
             const text = country$(cell).text().trim();
             return text === '' ? (index === 1 ? 'Sat link' : `Empty ${index + 1}`) : text;
         }).get();
+
+        
         console.log(columnNames)
         if (columnNames.length === 0) {
             throw new Error(`No columns found in the channel information table for ${countryUrl}`);
@@ -289,14 +313,23 @@ async function extractChannelsDataFromCountryPage({ country }) {
                 console.log(clc.green(`      ➕ Additional channel information from ${channelData.channel_page}:`));
             }
 
-            // Fix for [object Object] issue
             Object.keys(channelData).forEach(key => {
-                if (typeof channelData[key] === 'object' && channelData[key] !== null && key !== 'additional_data') {
-                    channelData[key] = channelData[key].hasOwnProperty('text') ? channelData[key].text : JSON.stringify(channelData[key]);
-                }
+               if (typeof channelData[key] === 'object' && channelData[key] !== null && key !== 'additional_data') {
+                   if (key === 'Channel Name' && 'text' in channelData[key]) {
+                       channelData[key] = channelData[key].text;
+                   } else {
+                       const objectKeys = Object.keys(channelData[key]);
+                       objectKeys.forEach(objectKey => {
+                           const newKey = `${key} ${objectKey}`;
+                           const newValue = channelData[key][objectKey];
+                           channelData[newKey] = newValue;
+                       });
+                       delete channelData[key];
+                   }
+               }
             });
 
-            console.log(clc.white(`         ${JSON.stringify(channelData)}`));
+            console.log(clc.white(`        ${JSON.stringify(channelData)}`));
             return channelData;
         }
 
@@ -313,19 +346,41 @@ async function extractChannelsDataFromCountryPage({ country }) {
                     if (text || fullUrl) {
                         if (channelData[columnName]) {
                             if (typeof channelData[columnName] === 'object') {
-                                channelData[columnName].text += `, ${text}`;
+                                channelData[columnName].text += text ? `, ${text}` : '';
                                 channelData[columnName].url = fullUrl;
                             } else {
                                 channelData[columnName] = {
-                                    text: `${channelData[columnName]}, ${text}`,
+                                    text: text ? `${channelData[columnName]}, ${text}` : channelData[columnName],
                                     url: fullUrl
                                 };
                             }
                         } else {
-                            channelData[columnName] = text ? { text, url: fullUrl } : fullUrl;
+                            channelData[columnName] = text ? { text, url: fullUrl } : { url: fullUrl };
+                        }
 
-                            if (fullUrl.includes("//www.lyngsat.com/tvchannels")) {
-                                channelData.channel_page = fullUrl;
+                        // Set the correct channel_page if the column is 'Channel Name'
+                        if (columnName === 'Channel Name') {
+                            console.log(`Original fullUrl: ${fullUrl}`);
+                            if (!fullUrl.includes('web.archive.org')) {
+                                console.log(`fullUrl doesn't contain 'web.archive.org', modifying...`);
+                                const countryUrlParts = countryUrl.split('/');
+                                const archiveBase = countryUrlParts.slice(0, 6).join('/') + '/';
+                                console.log(`Archive base URL: ${archiveBase}`);
+                                const fullUrlPath = new URL(fullUrl).pathname;
+                                console.log(`Extracted path from fullUrl: ${fullUrlPath}`);
+                                channelData.channel_page = archiveBase + 'www.lyngsat.com' + fullUrlPath;
+                                console.log(`Modified channel_page: ${channelData.channel_page}`);
+                            } else {
+                                const fullUrlParts = fullUrl.split('/');
+                                if (!fullUrlParts.includes('www.lyngsat.com')) {
+                                    const archiveBase = fullUrlParts.slice(0, 6).join('/') + '/';
+                                    const fullUrlPath = fullUrlParts.slice(6).join('/');
+                                    channelData.channel_page = archiveBase + 'www.lyngsat.com/' + fullUrlPath;
+                                    console.log(`Modified channel_page: ${channelData.channel_page}`);
+                                } else {
+                                    channelData.channel_page = fullUrl;
+                                    console.log(`Using original fullUrl as channel_page: ${channelData.channel_page}`);
+                                }
                             }
                         }
                     }
@@ -344,24 +399,53 @@ async function extractChannelsDataFromCountryPage({ country }) {
         }
 
         const rows = channelTable.find('tr:not(:first-child)').toArray();
-        const promises = rows.map(async (row) => {
+        console.log(clc.cyan(`Found ${rows.length} rows in the channel table.`));
+
+        let channels = [];
+        let currentChannelData = {};
+
+        for (const row of rows) {
             const $row = country$(row);
             const cellCount = $row.find('td').length;
+            const rowText = $row.text().trim();
 
-            let channelData = {};
-            if (cellCount < columnNames.length) {
-                // Continuation row
-                processCells($row, columnNames.length - cellCount, channelData);
-            } else {
-                // New row
-                processCells($row, 0, channelData);
+            if (rowText === "LyngSat Stream") {
+                console.log(clc.yellow(`Ignoring row with text: ${rowText}`));
+                continue;
             }
 
-            return processChannelData(channelData);
-        });
+            if (cellCount < columnNames.length) {
+                // Continuation row
+                processCells($row, columnNames.length - cellCount, currentChannelData);
+            } else {
+                // New row
+                if (Object.keys(currentChannelData).length > 0) {
+                    channels.push(await processChannelData(currentChannelData));
+                }
+                currentChannelData = {};
+                processCells($row, 0, currentChannelData);
+            }
+        }
 
-        const channels = await Promise.all(promises);
+        // Process the last channel data if exists
+        if (Object.keys(currentChannelData).length > 0) {
+            channels.push(await processChannelData(currentChannelData));
+        }
 
+        channels = channels.filter(channel => channel['Channel Name']);
+
+        const missingNameChannels = channels.filter(channel => !channel['Channel Name']);
+        if (missingNameChannels.length > 0) {
+            const errorMessage = `Found ${missingNameChannels.length} channels without 'Channel Name' for ${countryUrl}`;
+            console.error(clc.red(`      ❌ ${errorMessage}`));
+            errors.push({ url: countryUrl, error: errorMessage });
+        }
+
+        const outputFilePath = path.join(__dirname, 'test.json');
+        const outputData = JSON.stringify(channels, null, 2);
+
+        await fs.writeFile(outputFilePath, outputData, 'utf8');
+        console.log(clc.green(`Channels data saved to ${outputFilePath}`));
         return channels;
 
     } catch (error) {
@@ -371,59 +455,81 @@ async function extractChannelsDataFromCountryPage({ country }) {
 }
 
 async function extractChannelDataFromChannelPage({ channelPageUrl }) {
-    try {
-        const $ = await fetchPage(channelPageUrl);
-        const channelTable = $('table').filter((_, table) => {
-            const tableText = $(table).text();
-            return tableText.includes('Position') && tableText.includes('Satellite') &&
-                !tableText.includes('Colour legend') && !tableText.includes('News at') &&
-                !tableText.includes('google_ad') && !tableText.includes('Advertisements');
-        }).first();
+    const maxRetries = 3;
+    let retries = 0;
 
-        if (!channelTable.length) {
-            console.log(clc.yellow(`      ⚠️ No channel information table found for ${channelPageUrl}`));
-            return null;
-        }
+    while (retries < maxRetries) {
+        try {
+            const $ = await fetchPage(channelPageUrl);
+            const channelTable = $('table').filter((_, table) => {
+                const tableText = $(table).text();
+                const tableHtml = $(table).html();
+                return tableText.includes('Position') && tableText.includes('Satellite') &&
+                    !tableText.includes('Colour legend') && !tableText.includes('News at') &&
+                    !tableText.includes('google_ad') && !tableText.includes('Advertisements') &&
+                    !tableHtml.includes('window.adsbygoogle');
+            }).first();
 
-        const rows = channelTable.find('tr');
-        rows.each((_, row) => {
-            const cellsWithText = $(row).find('td').filter((_, cell) => $(cell).text().trim() !== '');
-
-            if (cellsWithText.length <= 2 || $(row).text().includes('lyngsat.com')) {
-                $(row).remove();
+            if (!channelTable.length) {
+                throw new Error('No channel information table found');
             }
-        });
-
-        const columnNames = channelTable.find('tr').first().find('td').map((_, cell) =>
-            $(cell).text().trim().replace(/\s+/g, ' ') || `Empty ${_}`
-        ).get();
-        console.log(columnNames)
-
-        const channelPageData = channelTable.find('tr').slice(1).map((_, row) => {
-            const rowData = {};
-            $(row).find('td').each((index, cell) => {
-                rowData[columnNames[index]] = extractText($(cell));
+            // console.log(clc.blue('Channel Table HTML:'));
+            //console.log(channelTable.html());
+            const rows = channelTable.find('tr');
+            rows.each((_, row) => {
+                const cellsWithText = $(row).find('td').filter((_, cell) => $(cell).text().trim() !== '');
+                if (cellsWithText.length <= 2 || $(row).text().includes('lyngsat.com')) {
+                    $(row).remove();
+                }
             });
-            return rowData;
-        }).get();
-        console.log(channelPageData)
-        return channelPageData;
-    } catch (error) {
-        console.error(clc.red(`      ❌ Error fetching additional channel information from ${channelPageUrl}: ${error.message}`));
-        return { error: error.message };
+
+            const columnNames = channelTable.find('tr').first().find('td').map((_, cell) =>
+                $(cell).text().trim().replace(/\s+/g, ' ') || `Empty ${_}`
+            ).get();
+            console.log('Columns: ' + columnNames.join(', '));
+            if (columnNames.length === 0) {
+                throw new Error('No column names found in the channel information table');
+            }
+
+            const channelPageData = channelTable.find('tr').slice(1).map((_, row) => {
+                const rowData = {};
+                $(row).find('td').each((index, cell) => {
+                    rowData[columnNames[index]] = extractText($(cell));
+                });
+                return rowData;
+            }).get();
+
+            if (channelPageData.length === 0) {
+                throw new Error('No data found in the channel information table');
+            }
+
+
+            return channelPageData;
+        } catch (error) {
+            retries++;
+            if (retries >= maxRetries) {
+                console.error(clc.red(`      ❌ Error fetching additional channel information from ${channelPageUrl} after ${maxRetries} attempts: ${error.message}`));
+                errors.push({ url: channelPageUrl, error: error.message });
+                return { error: error.message };
+            }
+            console.log(clc.yellow(`      ⚠️ Attempt ${retries} in scraping channel page failed. Retrying...`));
+            await new Promise(resolve => setTimeout(resolve, 1000 * retries)); // Exponential backoff
+        }
     }
 }
+
+
 function extractText($element) {
     $element.find('br').replaceWith(' ');
-    
+
     let text = $element.text();
-    
+
     text = text.replace(/\u00a0/g, ' ');
-    
+
     text = text.replace(/\s+/g, ' ');
-    
+
     text = text.trim();
-    
+
     return text;
 }
 
@@ -434,8 +540,9 @@ function extractText($element) {
 let totalCountries = 0;
 let totalChannels = 0;
 let errorCount = 0;
+let errors = [];
 
-let TEST_MODE = false
+let TEST_MODE = true
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const startTime = Date.now();
     const hostname = archiveUrl.match(/\/web\/(\d{14})/)[1];
@@ -473,20 +580,22 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
             const regionData = { name: regionLink.text, url: regionLink.url, countries: [] };
 
             try {
-                const countryLinks = await extractCountryLinks({regionUrl: regionLink.url});
+                const countryLinks = await extractCountryLinks({ regionUrl: regionLink.url });
 
-                await Promise.all((TEST_MODE ? countryLinks.slice(0, 2) : countryLinks).map(async countryLink => {
+                await Promise.all((TEST_MODE ? countryLinks.slice(0, 10) : countryLinks).map(async countryLink => {
                     console.log(clc.cyan(`         🔗 Country Link: ${countryLink.text} - ${countryLink.url}`));
                     const countryData = { name: countryLink.text, url: countryLink.url, channels: [] };
 
                     try {
-                        const channels = await extractChannelsDataFromCountryPage({country: countryLink});
+                        const channels = await extractChannelsDataFromCountryPage({ country: countryLink });
+                        //console.log(channels)
                         countryData.channels = channels;
                         totalCountries++;
                         totalChannels += channels.length;
                     } catch (error) {
                         console.error(clc.red(`      ❌ Error fetching channel information for ${countryLink.url}: ${error.message}`));
                         countryData.error = error.message;
+                        errors.push({ url: countryLink.url, error: error.message });
                         errorCount++;
                     }
 
@@ -504,6 +613,7 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
         console.error(clc.red(`\n❌ Error processing ${archiveUrl}: ${error.message}\n`));
         data[hostname].error = error.message;
         errorCount++;
+        errors.push({ url: archiveUrl, error: error.message });
     }
 
     const endTime = Date.now();
@@ -520,15 +630,15 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const outputData = JSON.stringify(data, null, 2);
     const dataFolder = path.join(__dirname, 'data');
     await fs.mkdir(dataFolder, { recursive: true });
-    const outputPath = path.join(dataFolder, `${hostname}${new Date().toISOString().slice(0, 10)}.json`);
+    const outputPath = path.join(dataFolder, `${hostname}.json`);
     try {
         await fs.writeFile(outputPath, outputData);
         console.log(clc.green(`✅ Data saved successfully to ${outputPath}`));
     } catch (error) {
         console.error(clc.red(`❌ Error saving data to file: ${error.message}`));
-    } finally{
-    // Reset request count
-    requestCount = 0;
+    } finally {
+        // Reset request count
+        requestCount = 0;
     }
     console.log(clc.blackBright('---------------------------------------------------'));
 }
@@ -547,8 +657,8 @@ async function main() {
     const fromDate = '20000101';  // Start date: January 1, 2000
     const toDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');  // End date: Today
     const outputFileName = path.join(__dirname, 'wayback_urls.json');
-    
-    
+
+
     /*
     const startTime = Date.now();
     const channelsData = await extractChannelsDataFromCountryPage({country : {url: 'http://web.archive.org/web/20141220192121/http://www.lyngsat.com/freetv/Australia.html', text : 'Australia'}});
@@ -572,9 +682,16 @@ return
     return
     
     
+    await extractChannelDataFromChannelPage({ channelPageUrl: 'http://web.archive.org/web/20141217120151/http://www.lyngsat.com/tvchannels/id/TVRI-Nasional.html' })
+    return
+    const channelsData = await extractChannelsDataFromCountryPage({ country: { url: 'http://web.archive.org/web/20141220192121/http://www.lyngsat.com/freetv/Brunei.html', text: "Brunei" } });
+ 
+    return
     */
- await extractChannelDataFromChannelPage({ channelPageUrl : 'http://web.archive.org/web/20141219215602/http://www.lyngsat.com/tvchannels/th/Shop-Thailand.html' })
- return 
+   const channelsData = await extractChannelsDataFromCountryPage({ country: { url: 'http://web.archive.org/web/20210421135838/http://www.lyngsat.com/freetv/Japan.html', text: "Japan" } });
+//    const channelsData = await extractChannelsDataFromCountryPage({ country: { url: 'http://web.archive.org/web/20080831093046/http://www.lyngsat.com/freetv/Japan.html', text: "Japan" } });
+
+   return
 
 
     try {
@@ -584,8 +701,8 @@ return
         console.log(clc.yellow('📁 Wayback URLs file not found. Fetching archived URLs...\n'));
         await fetchArchivedUrlsForEachMonth(host, fromDate, toDate);
     }
-    
-    
+
+
     try {
         const fileContent = await fs.readFile(outputFileName, 'utf8');
         let urlsObject = JSON.parse(fileContent);
@@ -593,16 +710,38 @@ return
 
         console.log(clc.cyan(`\n🔎 Processing ${urls.length} URLs...\n`));
         for (const archiveUrl of urls) {
+            const hostname = archiveUrl.match(/\/web\/(\d{14})/)[1];
+
+            if (await isArchiveSufficientlyProcessed(hostname)) {
+                console.log(clc.yellow(`Skipping ${archiveUrl} as it has been sufficiently processed.`));
+                continue;
+            }
+
             const startTime = Date.now();
             await scrapeLyngsatArchivedWebsite(archiveUrl);
             const endTime = Date.now();
+
+            if (errors.length > 0) {
+                console.log(clc.red('\n❌ Errors encountered during execution:'));
+                errors.forEach((err, index) => {
+                    console.log(clc.red(`${index + 1}. URL: ${err.url}`));
+                    console.log(clc.red(`   Error: ${err.error}`));
+                });
+            } else {
+                console.log(clc.green('\n✅ No errors encountered during execution.'));
+            }
+
             console.log(`Execution time: ${((endTime - startTime) / 1000 / 60).toFixed(2)} minutes`);
-console.log('##########################################################################')
-console.log('##########################################################################')
+            console.log('##########################################################################');
+            console.log('##########################################################################');
+
+            // Reset errors after processing each URL
+            errors = [];
         }
     } catch (error) {
         console.error(clc.red('\n❌ Error reading or parsing the JSON file:'), error);
     }
+
 
     console.log(clc.green('\n✅ Script execution completed.\n'));
 }
