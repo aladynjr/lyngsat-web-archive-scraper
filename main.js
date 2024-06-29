@@ -213,52 +213,56 @@ async function getRegionLinks({ freeTvUrl }) {
 async function extractCountryLinks({ regionUrl }) {
     console.log(clc.blue(`\n🌎 Processing region: ${regionUrl}`));
     const countryLinks = [];
+    const maxRetries = 3;
 
-    try {
-        const region$ = await fetchPage(regionUrl);
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            const region$ = await fetchPage(regionUrl);
 
-        const targetTable = region$('table').get().reverse().find(table => {
-            const $table = region$(table);
-            return $table.find('td').length > 4 &&
-                !$table.text().includes('Advertisements') &&
-                !$table.text().includes('News at') &&
-                !$table.find('a[href*="advert"]').length &&
-                !$table.find('i').length &&
-                !$table.find('script').length;
-        });
-        let rowContent = '';
-        if (targetTable) {
-            console.log(clc.green(`   📊 Found countries table `));
-
-            region$(targetTable).find('tr').each((_, row) => {
-                const $row = region$(row);
-                rowContent += ' | ' + $row.find('td').map((_, cell) => {
-                    const cellText = region$(cell).text().trim();
-                    return cellText ? cellText : null;
-                }).get().filter(Boolean).join(' | ');
-
-
-
-                $row.find('a').each((_, anchor) => {
-                    const $anchor = region$(anchor);
-                    const href = $anchor.attr('href');
-                    const text = $anchor.text().trim();
-                    if (href && text.trim()) {
-                        countryLinks.push({ text, url: url.resolve(regionUrl, href) });
-                    }
-                });
+            const targetTable = region$('table').get().reverse().find(table => {
+                const $table = region$(table);
+                return $table.find('td').length > 4 &&
+                    !$table.text().includes('Advertisements') &&
+                    !$table.text().includes('News at') &&
+                    !$table.find('a[href*="advert"]').length &&
+                    !$table.find('i').length &&
+                    !$table.find('script').length;
             });
+            let rowContent = '';
+            if (targetTable) {
+                console.log(clc.green(`   📊 Found countries table `));
 
-            console.log(clc.cyan(`   Found ${countryLinks.length} country links for ${clc.white(`${rowContent.trim()}`)}`));
-        } else {
-            console.log(clc.yellow(`   ⚠️ No suitable table found for ${regionUrl}`));
+                region$(targetTable).find('tr').each((_, row) => {
+                    const $row = region$(row);
+                    rowContent += ' | ' + $row.find('td').map((_, cell) => {
+                        const cellText = region$(cell).text().trim();
+                        return cellText ? cellText : null;
+                    }).get().filter(Boolean).join(' | ');
+
+                    $row.find('a').each((_, anchor) => {
+                        const $anchor = region$(anchor);
+                        const href = $anchor.attr('href');
+                        const text = $anchor.text().trim();
+                        if (href && text.trim()) {
+                            countryLinks.push({ text, url: url.resolve(regionUrl, href) });
+                        }
+                    });
+                });
+
+                console.log(clc.cyan(`   Found ${countryLinks.length} country links for ${clc.white(`${rowContent.trim()}`)}`));
+            } else {
+                console.log(clc.yellow(`   ⚠️ No suitable table found for ${regionUrl}`));
+            }
+
+            return countryLinks; // Success, exit the retry loop
+        } catch (error) {
+            console.error(clc.red(`   ❌ Error processing ${regionUrl} (Attempt ${attempt}/${maxRetries}): ${error.message}`));
+            if (attempt === maxRetries) {
+                throw error; // Throw error after all retries are exhausted
+            }
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retrying
         }
-    } catch (error) {
-        console.error(clc.red(`   ❌ Error processing ${regionUrl}: ${error.message}`));
-        throw error;
     }
-
-    return countryLinks;
 }
 
 
@@ -545,7 +549,7 @@ let totalCountries = 0;
 let totalChannels = 0;
 let errorCount = 0;
 let errors = [];
-
+let totalErrors = []
 let TEST_MODE = true
 async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     const startTime = Date.now();
@@ -629,12 +633,21 @@ async function scrapeLyngsatArchivedWebsite(archiveUrl) {
     data[hostname].errorCount = errorCount;
     data[hostname].totalRequests = requestCount;
     data[hostname].executionTimeSeconds = executionTime;
+    data[hostname].errors = errors;
 
     console.log(clc.cyan(`✅ Finished processing ${archiveUrl}\n`));
     const outputData = JSON.stringify(data, null, 2);
     const dataFolder = path.join(__dirname, 'data');
     await fs.mkdir(dataFolder, { recursive: true });
-    const outputPath = path.join(dataFolder, `${hostname}.json`);
+    
+    // Extract year and month from hostname
+    const [year, month] = hostname.slice(0, 6).match(/.{1,4}/g);
+    const monthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][parseInt(month, 10) - 1];
+    
+    // Create the new filename format
+    const newFilename = `${year}-${monthName}_${hostname}.json`;
+    const outputPath = path.join(dataFolder, newFilename);
+    
     try {
         await fs.writeFile(outputPath, outputData);
         console.log(clc.green(`✅ Data saved successfully to ${outputPath}`));
@@ -741,6 +754,8 @@ return
             console.log('##########################################################################');
             console.log('##########################################################################');
 
+            // Add errors to totalErrors before resetting
+            totalErrors = totalErrors.concat(errors);
             // Reset errors after processing each URL
             errors = [];
         }
@@ -748,7 +763,7 @@ return
         console.error(clc.red('\n❌ Error reading or parsing the JSON file:'), error);
     }
 
-
+console.log(totalErrors)
     console.log(clc.green('\n✅ Script execution completed.\n'));
 }
 
