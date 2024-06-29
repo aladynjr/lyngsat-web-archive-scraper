@@ -64,7 +64,7 @@ function processAllJsonFiles() {
 
                     // Add any other channel properties
                     for (const [key, value] of Object.entries(channel)) {
-                      if (!['Channel Name', 'Logo', 'Channel Page', 'additional_data'].includes(key)) {
+                      if (!['Channel Name', 'Logo', 'Channel Page', 'additional_data', 'Logo url'].includes(key)) {
                         headers.add(key);
                         rowData[key] = value;
                       }
@@ -75,6 +75,14 @@ function processAllJsonFiles() {
                     for (const [key, value] of Object.entries(mergedAdditionalData)) {
                       headers.add(key);
                       rowData[key] = value;
+                    }
+
+                    // Check and replace "Empty 3 url" columns
+                    if (rowData['Empty 3 url']) {
+                      rowData['Satellite satadresse url'] = rowData['Empty 3 url'];
+                      delete rowData['Empty 3 url'];
+                      headers.add('Satellite satadresse url');
+                      headers.delete('Empty 3 url');
                     }
 
                     allCsvRows.push(rowData);
@@ -97,10 +105,22 @@ function processAllJsonFiles() {
   });
   headers.delete('Frequency text');
 
+  // Merge 'Beam' and 'Beam text' columns
+  allCsvRows.forEach(row => {
+    if (row['Beam text']) {
+      row['Beam'] = row['Beam text'] + (row['Beam'] ? `, ${row['Beam']}` : '');
+      delete row['Beam text'];
+    }
+  });
+  headers.delete('Beam text');
+
   // Remove columns with no values
   const nonEmptyHeaders = Array.from(headers).filter(header => 
     allCsvRows.some(row => row[header] !== undefined && row[header] !== '')
   );
+
+  // Remove 'Logo url' column if it exists
+  headers.delete('Logo url');
 
   const csvContent = [
     nonEmptyHeaders.join(','),
