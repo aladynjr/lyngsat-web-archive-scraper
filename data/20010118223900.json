@@ -1,0 +1,1634 @@
+{
+  "20010118223900": {
+    "archiveUrl": "http://web.archive.org/web/20010118223900/http://www.lyngsat.com:80/",
+    "regions": [
+      {
+        "name": "Pacific",
+        "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Pacific.shtml",
+        "countries": []
+      },
+      {
+        "name": "Asia",
+        "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Asia.shtml",
+        "countries": [
+          {
+            "name": "Brunei",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Brunei.shtml",
+            "channels": [
+              {
+                "Channel Name": "TV Brunei",
+                "channel_page": "http://web.archive.org/web/20010209143447/http:/www.lyngsat.com//www.rtb.gov.bn/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209143447/http://www.satlogo.com/tv_af/bbb0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143447/http://www.sat-address.com/tt/TV-Brunei.shtml",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143447/http://www.lyngsat.com/palapac2.shtml"
+              }
+            ]
+          },
+          {
+            "name": "India",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/India.shtml",
+            "channels": [
+              {
+                "Channel Name": "Aaj Tak",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.aajtak.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/aaa0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ab/Aaj-Tak.shtml",
+                "Satellite text": "Insat 2E, Insat 2E, Insat 2E, Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "Asianet Global",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.asianetglobal.com/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/corp/corp_ab0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ab/Asianet-Global.shtml",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "Asianet Kaveri",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.asianetglobal.com/kaveri.htm",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/kkk0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ab/Asianet-Kaveri.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "B4U Movies Middle East",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.b4utv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tvpack_sz/skydigital0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ab/B4U-UK.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "B4U Music",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.b4utv.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tvpack_sz/skydigital0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ab/B4U-Music.shtml",
+                "Satellite text": "PAS 4, Astra 2B, Intelsat 707",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/i707.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Cee TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.rtvnetwork.com/Cee/index.htm",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/cc/Cee-I-TV.shtml",
+                "Satellite text": "Astra 2B",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/astra2b.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Channel V India",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.vindia.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/cc/Channel-V-India.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "CNBC India",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.cnbcasia.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/cc/CNBC-Asia-Business-News.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "DD 10 - Maharashtra",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD10.shtml",
+                "Satellite text": "Insat 2C",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2c.shtml"
+              },
+              {
+                "Channel Name": "DD 11 - Gujarati",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD11.shtml",
+                "Satellite text": "Insat 2C",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2c.shtml"
+              },
+              {
+                "Channel Name": "DD 12 - Jammu & Kashmir",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD12.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "DD 14 - Jaipur",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD14.shtml",
+                "Satellite text": "Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD 15 - Madhya Pradesh",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD15.shtml",
+                "Satellite text": "Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD 16 - Uttar Pradesh",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD16.shtml",
+                "Satellite text": "Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD 17 - Bihar",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD17.shtml",
+                "Satellite text": "Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD 4 - Kerala",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD4.shtml",
+                "Satellite text": "Insat 2C",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2c.shtml"
+              },
+              {
+                "Channel Name": "DD 5 - Podhigai",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "MPEG-2, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD5.shtml",
+                "Satellite text": "Insat 2E, Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "DD 6 - Oriya",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD6.shtml",
+                "Satellite text": "Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD 7 - West Bengal",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "MPEG-2, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD7.shtml",
+                "Satellite text": "Insat 2E, Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "DD 8 - Andhra Pradesh",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD8.shtml",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "DD 9 - Karnataka",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD9.shtml",
+                "Satellite text": "Insat 2C",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2c.shtml"
+              },
+              {
+                "Channel Name": "DD Metro",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/18.html",
+                "Video": "MPEG-2, PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD2.shtml",
+                "Satellite text": "Insat 2E, Insat 2E, PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "DD National",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/15.html",
+                "Video": "MPEG-2, PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD1.shtml",
+                "Satellite text": "Insat 2E, Insat 2E, PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "DD News",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/bk1/36.html",
+                "Video": "MPEG-2, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD-News.shtml",
+                "Satellite text": "PAS 4, PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "DD North-East",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL, PAL, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD13.shtml",
+                "Satellite text": "Insat 2C, Apstar 2R, Insat 2DT",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2dt.shtml"
+              },
+              {
+                "Channel Name": "DD Punjab",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/RealContent/about/19.html",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD18.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "DD World",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.ddindia.net/bk1/con5.html",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_af/ddd0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/DD-World.shtml",
+                "Satellite text": "Thaicom 3, PAS 4, PAS 1, PAS 9",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas9.shtml"
+              },
+              {
+                "Channel Name": "ETC - Entertainment TV Channel",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.entertainmenttv.com/",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/df/ETC-India.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "ETC Channel Punjabi",
+                "Video": "PAL",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "ETV",
+                "Video": "PAL",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "ETV Bangla",
+                "Video": "PAL",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "ETV Telugu",
+                "Video": "PAL",
+                "Satellite text": "Intelsat 704",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/i704.shtml"
+              },
+              {
+                "Channel Name": "Gemini TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/geminitv/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/ggg0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/gk/Gemini-TV.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Gurjari Channel",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.rtvnetwork.com/Gurjari/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/ggg0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/gk/Gurjari-Channel.shtml",
+                "Satellite text": "Thaicom 3, Astra 2B",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/astra2b.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Jain Satellite TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.jaintv.com/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/jjj0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/gk/Jain-TV.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "Jaya TV",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/jjj0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/gk/Jaya-TV.shtml",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "Kairali Channel",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.malayalamchannel.com/",
+                "Video": "PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/kkk0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/gk/Kairali-Channel.shtml",
+                "Satellite text": "Insat 2E, Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "Lashkara Channel",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.rtvnetwork.com/Lashkara/",
+                "Video": "MPEG-2, PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/lll0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/Lashkara-Channel.shtml",
+                "Satellite text": "Thaicom 3, Thaicom 3, Astra 2B",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/astra2b.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Maharishi Open University Asia",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.mou.org/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/MOU.shtml",
+                "Satellite text": "Optus B1, Optus B3, Measat 2, Palapa C2, Thaicom 3, Telstar 11",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/t11.shtml"
+              },
+              {
+                "Channel Name": "Maharishi Open University Europe",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.mou.org/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/MOU.shtml",
+                "Satellite text": "Hot Bird 3, Telstar 11",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/t11.shtml"
+              },
+              {
+                "Channel Name": "Maharishi Open University US",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.mou.org/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/MOU.shtml",
+                "Satellite text": "Telstar 11, Telstar 5",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/t5.shtml"
+              },
+              {
+                "Channel Name": "Maharishi Veda Vision Asia",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.maharishi-india.org/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/Maharishi-Veda-Vision.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "Maharishi Veda Vision Australia",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.maharishi-india.org/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/Maharishi-Veda-Vision.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "MTV India",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.mtvindia.com/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ln/MTV-India.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "Prabhat TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "Raaj Plus",
+                "Video": "MPEG-2",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "Raaj TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "SABe TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "Sahara TV",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/Sahara-TV.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "Sony Entertainment TV Middle East",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.setindia.com/",
+                "Video": "PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tvpack_sz/showtime0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/SET-UAE.shtml",
+                "Satellite text": "PAS 4, Nilesat 101",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nile101.shtml",
+                "Package text": "Showtime Network",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/showtimenile.shtml"
+              },
+              {
+                "Channel Name": "Star Gold",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.startv.com/eng/channel/stargold/right.html",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tvpack_af/art0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/STAR-Gold.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "Sun Cable Vision",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/scv/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/SUN-Cable-Vision.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Sun News Channel",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/sunnews/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/SUN-News.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Sun TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/suntv/",
+                "Video": "PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tvpack_af/dishnetwork0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/SUN-TV.shtml",
+                "Satellite text": "NSS 703, NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Surya TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/suryatv/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/ss/Surya-TV.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Teja TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/tejatv/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/tt/Teja-TV.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "TMG Enter TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.tmgpower.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/tt/TMG-Enter-TV.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "Udaya TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/udayatv/",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Udaya-TV.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Ushe TV",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.sunnt.com/ushetv/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Ushe-TV.shtml",
+                "Satellite text": "NSS 703",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/nss703.shtml"
+              },
+              {
+                "Channel Name": "Vijay TV",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/vvv0.html",
+                "Satellite text": "Insat 2E",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/in2e.shtml"
+              },
+              {
+                "Channel Name": "Zed TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "Zee Music",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.zeetelevision.com/newzee/zee-music.htm",
+                "Video": "MPEG-2, PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/zzz0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Zee-Music.shtml",
+                "Satellite text": "Asiasat 3S, PAS 4, Astra 2B",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/astra2b.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Zee News",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.zeenews.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/zzz0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Zee-News.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "Zee TV Africa",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.zeetelevision.com/newzee/ztvhome.htm",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/zzz0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Zee-Africa.shtml",
+                "Satellite text": "PAS 9",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/pas9.shtml"
+              },
+              {
+                "Channel Name": "Zee TV Asia",
+                "channel_page": "http://web.archive.org/web/20010209144029/http:/www.lyngsat.com//www.zeetelevision.com/newzee/ztvhome.htm",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144029/http://www.satlogo.com/tv_sz/zzz0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144029/http://www.sat-address.com/uz/Zee-TV.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144029/http://www.lyngsat.com/asia3s.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Macau",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Macau.shtml",
+            "channels": [
+              {
+                "Channel Name": "Macau Satellite TV",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143417/http://www.satlogo.com/tv_gr/mmm0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143417/http://www.sat-address.com/ln/Macau-STV.shtml",
+                "Satellite text": "Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209143417/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "Macau TV 5",
+                "Video": "MPEG-2",
+                "Satellite text": "Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209143417/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "Macau TV Asia",
+                "Video": "MPEG-2",
+                "Satellite text": "Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209143417/http://www.lyngsat.com/sino1.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Hong Kong",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Hong-Kong.shtml",
+            "channels": [
+              {
+                "Channel Name": "Asia Plus",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.asiaplusi.com/",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/ab/Asia-Plus.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "CTN Dadi",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.ctn.net/",
+                "Video": "Digicipher 1",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/cc/CTN-Dadi-Channel.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "CTN Zhong Tian",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.ctn.net/",
+                "Video": "Digicipher 1",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/cc/CTN-Zhong-Tian-Channel.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "PCNE - Phoenix Chinese News & Entertainment",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.phoenixtv.com/pcne/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tvpack_sz/skydigital0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/or/PCNE.shtml",
+                "Satellite text": "Astra 2A",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/astra2a.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Phoenix Chinese",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.phoenixtv.com/",
+                "Video": "MPEG-2, NTSC",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tvpack_sz/skydigital0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/or/Phoenix-Chinese-Channel.shtml",
+                "Satellite text": "Asiasat 3S, Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/asia3s.shtml",
+                "Package text": "STAR TV",
+                "Package url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/dig/startvasia3s.shtml"
+              },
+              {
+                "Channel Name": "Phoenix InfoNews",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/asia3s.shtml",
+                "Package text": "STAR TV",
+                "Package url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/dig/startvasia3s.shtml"
+              },
+              {
+                "Channel Name": "Star News",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.startv.com/eng/channel/starnews/right.html",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tvpack_sz/startv0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/ss/STAR-News-Channel.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "Star Plus",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.startv.com/eng/channel/starplus/right.html",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tvpack_sz/startv0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/ss/STAR-Plus.shtml",
+                "Satellite text": "PAS 4",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas4.shtml"
+              },
+              {
+                "Channel Name": "Star Sports",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.startv.com/eng/channel/starsports/right.html",
+                "Video": "MPEG-2, NTSC",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tvpack_sz/startv0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/ss/STAR-Sports-Asia.shtml",
+                "Satellite text": "Agila 2, Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "Sun TV",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.chinasuntv.com/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/ss/Sun-TV-China.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "TVB 8",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.tvb.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/tt/TVB-Channel-8.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "TVBS",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.tvb.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/tt/TVBS-Super-Channel.shtml",
+                "Satellite text": "Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/apstar2r.shtml"
+              },
+              {
+                "Channel Name": "TVBS Asia",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.tvb.com/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/tt/TVBS-Asia.shtml",
+                "Satellite text": "PAS 2, PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "TVBS Golden",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.tvb.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/tt/TVBS-Golden-Channel.shtml",
+                "Satellite text": "Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/apstar2r.shtml"
+              },
+              {
+                "Channel Name": "TVBS Newsnet",
+                "channel_page": "http://web.archive.org/web/20010209144332/http:/www.lyngsat.com//www.tvb.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144332/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144332/http://www.sat-address.com/tt/TVBS-Newsnet.shtml",
+                "Satellite text": "PAS 2, PAS 2, PAS 8, Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209144332/http://www.lyngsat.com/apstar2r.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Laos",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Laos.shtml",
+            "channels": [
+              {
+                "Channel Name": "Laos TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Thaicom 1A",
+                "Satellite url": "http://web.archive.org/web/20010209143755/http://www.lyngsat.com/thai1.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Cambodia",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Cambodia.shtml",
+            "channels": [
+              {
+                "Channel Name": "TVK",
+                "Video": "MPEG-2",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209144113/http://www.lyngsat.com/thai3.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Japan",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Japan.shtml",
+            "channels": [
+              {
+                "Channel Name": "Better Life Channel",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/216.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Car Channel",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/218.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Channel J",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.channelj.co.jp/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_af/directv0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/cc/Channel-J.shtml",
+                "Satellite text": "PAS 8, PAS 4, PAS 9, DirecTV 6",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dtv6.shtml",
+                "Package text": "DirecTV USA",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/directvusa119.shtml"
+              },
+              {
+                "Channel Name": "CoCoRo TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.cocorotv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/cc/CoCoRo-TV.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml"
+              },
+              {
+                "Channel Name": "DigiCube",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/215.html",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/df/DigiCube.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Gokaku Channel",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/Gokaku-Channel.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "HMV TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.hmv.co.jp/hi/hmv_tv.asp",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/hhh0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/HMV-TV.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "Investation",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.investation.co.jp/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/Investation.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "JSTV - Japan Satellite TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.jstv.co.uk/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/jjj0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/JSTV-Japan-Satellite-TV.shtml",
+                "Satellite text": "Hot Bird 5",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/hb5.shtml"
+              },
+              {
+                "Channel Name": "K-Max",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.k-max330.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/K-Max.shtml",
+                "Satellite text": "PAS 2",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas2.shtml"
+              },
+              {
+                "Channel Name": "Kit Manzox Club",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.manzox.ch/kitm.htm",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/Kit-Manzox-Club.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "KNTV - Korea Now TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.kntv.co.jp/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/kkk0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/KNTV-Korea-Now-TV.shtml",
+                "Satellite text": "PAS 2",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas2.shtml"
+              },
+              {
+                "Channel Name": "Kojima Shopping World",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www1.toppan.co.jp/kojima/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/Kojima-Shopping-World.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "KTC Growth",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.grow-sky.co.jp/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/gk/KTC-Growth.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "Mall of TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.motv.co.jp/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ln/Mall-of-TV.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "NHK BS 1",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.nhk.or.jp/bs/",
+                "Video": "NTSC, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/nnn0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ln/NHK-BS.shtml",
+                "Satellite text": "BSAT 1A, BSAT 1B",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/bsat1b.shtml"
+              },
+              {
+                "Channel Name": "NHK BS 2",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.nhk.or.jp/bs/",
+                "Video": "NTSC, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/nnn0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ln/NHK-BS.shtml",
+                "Satellite text": "BSAT 1A, BSAT 1B",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/bsat1b.shtml"
+              },
+              {
+                "Channel Name": "NHK Hi-Vision",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.nhk.or.jp/hi-vision/",
+                "Video": "MUSE, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/nnn0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ln/NHK-Hi-Vision.shtml",
+                "Satellite text": "BSAT 1A, BSAT 1B",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/bsat1b.shtml"
+              },
+              {
+                "Channel Name": "NHK World TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.nhk.or.jp/nhkworld/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, Digicipher 2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/nnn0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ln/NHK-World-TV.shtml",
+                "Satellite text": "PAS 8, PAS 8, PAS 4, PAS 4, PAS 9, PAS 9, Satcom K2",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/sk2.shtml"
+              },
+              {
+                "Channel Name": "OSB 1",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.osb-tv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/ooo0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/or/OSB.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "OSB 3",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.osb-tv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/ooo0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/or/OSB.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "OSB Christian TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.osb-tv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_gr/ooo0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/or/OSB.shtml",
+                "Satellite text": "PAS 8",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas8.shtml"
+              },
+              {
+                "Channel Name": "Promo 200",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/200.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Promo 201",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/201.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Promo 202",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/202.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "Rakuten TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/217.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "She TV",
+                "Video": "MPEG-2",
+                "Satellite text": "PAS 2",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/pas2.shtml"
+              },
+              {
+                "Channel Name": "Shikaku TV",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.toshin.ac.jp/skill/shikaku/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ss/Shikaku-TV.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "Shop Channel",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.jpc.co.jp/SHOP/shopindex.html",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ss/Shop-Channel.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Success TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/ss/Success-TV.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml"
+              },
+              {
+                "Channel Name": "Tac Channel",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.tac-media.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/tt/Tac-Channel.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "The University of the Air",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.u-air.ac.jp/hp/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/uz/Univ-Air.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "Toshin Dream Net",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/230.html",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143600/http://www.satlogo.com/tvpack_sz/skyperfect0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/tt/Toshin-Dream-Channel.shtml",
+                "Satellite text": "JCSAT 3",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc3.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv3.shtml"
+              },
+              {
+                "Channel Name": "University of East Asia",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/uz/UoEA.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "Welfare Channel",
+                "channel_page": "http://web.archive.org/web/20010209143600/http:/www.lyngsat.com//www.skyperfectv.co.jp/ch/761.html",
+                "Video": "MPEG-2",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              },
+              {
+                "Channel Name": "Zenkoku P! Channel",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143600/http://www.sat-address.com/uz/Zenkoku-Channel.shtml",
+                "Satellite text": "JCSAT 4A",
+                "Satellite url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/jc6.shtml",
+                "Package text": "Sky PerfecTV",
+                "Package url": "http://web.archive.org/web/20010209143600/http://www.lyngsat.com/dig/skyperfectv4.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Indonesia",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Indonesia.shtml",
+            "channels": [
+              {
+                "Channel Name": "Anteve",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.anteve.uninet.net.id/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tv_af/aaa0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/ab/Anteve.shtml",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "Indosiar",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.indosiar.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tv_gr/iii0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/tt/TV-Indosiar.shtml",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "Metro Business",
+                "Video": "MPEG-2",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "Metro TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "Quick Channel",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.quickchannels.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tvpack_gr/indovision0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/or/Quick-Financial-Channel.shtml",
+                "Satellite text": "Cakrawarta 1",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/cw1.shtml",
+                "Package text": "Indovision",
+                "Package url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/dig/indovision.shtml"
+              },
+              {
+                "Channel Name": "RCTI - Rajawali Citra TV",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.rcti.co.id/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tv_gr/rrr0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/or/RCTI-Rajawali-Citra-Televisi-Indonesia.shtml",
+                "Satellite text": "Palapa C2, Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "SCTV - Surya Citra TV",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.sctv.co.id/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/ss/SCTV-Surya-Citra-Televisi.shtml",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "Swara",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.swara.net/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/ss/Swara.shtml",
+                "Satellite text": "Cakrawarta 1",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/cw1.shtml",
+                "Package text": "Indovision",
+                "Package url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/dig/indovision.shtml"
+              },
+              {
+                "Channel Name": "TPI - TV Pendidikan Indonesia",
+                "channel_page": "http://web.archive.org/web/20010209143753/http:/www.lyngsat.com//www.tpi.co.id/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143753/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143753/http://www.sat-address.com/tt/TPI-Televisi-Pendidikan-Indonesia.shtml",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              },
+              {
+                "Channel Name": "TVRI Programa National",
+                "Video": "PAL",
+                "Satellite text": "Palapa C2",
+                "Satellite url": "http://web.archive.org/web/20010209143753/http://www.lyngsat.com/palapac2.shtml"
+              }
+            ]
+          },
+          {
+            "name": "China",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/China.shtml",
+            "channels": [
+              {
+                "Channel Name": "Anhui TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.ahtv.com.cn/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ab/Anhui-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Beijing TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.btv.org/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ab/Beijing-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "CCTV 1",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv.com/",
+                "Video": "MPEG-2, PAL, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-1.shtml",
+                "Satellite text": "Apstar 1A, Apstar 1A, Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "CCTV 2",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv.com/",
+                "Video": "MPEG-2, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-2.shtml",
+                "Satellite text": "Apstar 1A, Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "CCTV 3",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv-3.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-3.shtml",
+                "Satellite text": "PAS 2, Asiasat 3S, Asiasat 2, PAS 4, PAS 3R, PAS 9",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/pas9.shtml"
+              },
+              {
+                "Channel Name": "CCTV 4",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv-4.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, Digicipher 2, NTSC, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-4.shtml",
+                "Satellite text": "PAS 2, Asiasat 3S, Asiasat 2, PAS 4, Hot Bird 3, Intelsat 707, PAS 3R, PAS 9, Galaxy 11, Galaxy 3R, SatMex 5",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sm5.shtml",
+                "Package text": "Nova",
+                "Package url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/dig/nova.shtml"
+              },
+              {
+                "Channel Name": "CCTV 7",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv.com/",
+                "Video": "MPEG-2, PAL",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-7.shtml",
+                "Satellite text": "Apstar 1A, Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "CCTV 9",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv-9.com/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CCTV-9.shtml",
+                "Satellite text": "PAS 2, Asiasat 3S, Asiasat 2, PAS 4, Intelsat 707, PAS 3R, PAS 9",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/pas9.shtml"
+              },
+              {
+                "Channel Name": "CCTV World News",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cctv.com/",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "CETV - China Entertainment TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.cetv.com/",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/CETV-Family-Channel.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia3s.shtml"
+              },
+              {
+                "Channel Name": "CETV 1",
+                "Video": "PAL, MPEG-2",
+                "Satellite text": "Apstar 1A, Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "CETV 2",
+                "Video": "MPEG-2",
+                "Satellite text": "Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "CETV SD",
+                "Video": "PAL, MPEG-2",
+                "Satellite text": "Apstar 1A, Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "Chongqing TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/cc/Chongqing-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Fujian South East TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//setv.fj.cninfo.net/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/SETV-Fujian.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Gansu TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Gansu-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Guangdong TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.gdtv.com.cn/",
+                "Video": "MPEG-2, MPEG-2, MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Guangdong-TV.shtml",
+                "Satellite text": "Asiasat 2, Apstar 2R, Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar2r.shtml",
+                "Package text": "C Sky Net, C Sky Net",
+                "Package url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/dig/cskynet.shtml"
+              },
+              {
+                "Channel Name": "Guangxi TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.gxtv.com.cn/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/ggg0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Guangxi-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Guizhou TV",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Guizhou-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Hainan TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.hainantv.com.cn/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Hainan-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Hebei TV",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "HeiLongJiang TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.hljtv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/hhh0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/HeiLongJiang-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Henan TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.hntv.ha.cn/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/hhh0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Henan-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Hubei TV",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/hhh0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Hubei-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Hunan TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.hunantv.com/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/hhh0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Hunan-TV.shtml",
+                "Satellite text": "Asiasat 2, Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar2r.shtml"
+              },
+              {
+                "Channel Name": "Inner Mongolia TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.nmtv.com.cn/",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Inner-Mongolia-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Jiangsu TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.jstv.com.cn/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/jjj0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/JSTV-Jiangsu-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Jiangxi TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.jxtv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_gr/jjj0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/gk/Jiangxi-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Jilin Satellite Channel",
+                "Video": "MPEG-2",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Liaoning TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ln/Liaoning-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "NingXia TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ln/NingXia-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Qinghai TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/or/Qinghai-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "SBN - Shanghai Broadcasting Network",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//www.sbn.sh.cn/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/sss0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/SBN-Shanghai.shtml",
+                "Satellite text": "Sinosat 1",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/sino1.shtml"
+              },
+              {
+                "Channel Name": "Shaanxi TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/Shaanxi-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Shandong TV",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/Shandong-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Shanxi TV",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/Shanxi-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "Sichuan TV",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/ss/Sichuan-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Tianjin TV",
+                "channel_page": "http://web.archive.org/web/20010209144213/http:/www.lyngsat.com//time.online.tj.cn/tjtv/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/ttt0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/tt/Tianjin-TV.shtml",
+                "Satellite text": "Asiasat 2",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/asia2.shtml"
+              },
+              {
+                "Channel Name": "XinJiang TV 1",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/xxx0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/uz/XinJiang-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "XinJiang TV 2",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/xxx0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/uz/XinJiang-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "XinJiang TV 3",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/xxx0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/uz/XinJiang-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "Yunnan TV",
+                "Video": "PAL",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/uz/Yunnan-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              },
+              {
+                "Channel Name": "ZheJiang TV",
+                "Video": "PAL",
+                "Logo url": "http://web.archive.org/web/20010209144213/http://www.satlogo.com/tv_sz/zzz0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209144213/http://www.sat-address.com/uz/ZheJiang-TV.shtml",
+                "Satellite text": "Apstar 1A",
+                "Satellite url": "http://web.archive.org/web/20010209144213/http://www.lyngsat.com/apstar1a.shtml"
+              }
+            ]
+          },
+          {
+            "name": "Bangladesh",
+            "url": "http://web.archive.org/web/20010201164700/http://www.lyngsat.com/free/Bangladesh.shtml",
+            "channels": [
+              {
+                "Channel Name": "ATN Bangla",
+                "channel_page": "http://web.archive.org/web/20010209143526/http:/www.lyngsat.com//www.atnbangla.com/",
+                "Video": "MPEG-2, MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143526/http://www.satlogo.com/tv_af/aaa0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143526/http://www.sat-address.com/ab/ATN-Bangla.shtml",
+                "Satellite text": "Thaicom 3, Hot Bird 3",
+                "Satellite url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/hb3.shtml"
+              },
+              {
+                "Channel Name": "ATN World",
+                "channel_page": "http://web.archive.org/web/20010209143526/http:/www.lyngsat.com//www.atnbangla.com/world.htm",
+                "Video": "MPEG-2",
+                "Empty 3 url": "http://web.archive.org/web/20010209143526/http://www.sat-address.com/ab/ATN-World.shtml",
+                "Satellite text": "Thaicom 3",
+                "Satellite url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/thai3.shtml"
+              },
+              {
+                "Channel Name": "Bangla TV",
+                "channel_page": "http://web.archive.org/web/20010209143526/http:/www.lyngsat.com//www.rtvnetwork.com/Bangla/index.htm",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143526/http://www.satlogo.com/tvpack_sz/skydigital0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143526/http://www.sat-address.com/ab/Bangla-TV.shtml",
+                "Satellite text": "Astra 2B",
+                "Satellite url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/astra2b.shtml",
+                "Package text": "Sky Digital",
+                "Package url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/dig/skyuk.shtml"
+              },
+              {
+                "Channel Name": "Channel I",
+                "channel_page": "http://web.archive.org/web/20010209143526/http:/www.lyngsat.com//www.channel-i-tv.com/",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143526/http://www.satlogo.com/tv_af/ccc0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143526/http://www.sat-address.com/cc/Channel-I.shtml",
+                "Satellite text": "Apstar 2R",
+                "Satellite url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/apstar2r.shtml"
+              },
+              {
+                "Channel Name": "Ekushey TV",
+                "Video": "MPEG-2",
+                "Logo url": "http://web.archive.org/web/20010209143526/http://www.satlogo.com/tv_af/eee0.html",
+                "Empty 3 url": "http://web.archive.org/web/20010209143526/http://www.sat-address.com/df/Ekushey-TV.shtml",
+                "Satellite text": "Asiasat 3S",
+                "Satellite url": "http://web.archive.org/web/20010209143526/http://www.lyngsat.com/asia3s.shtml"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "freeTvUrl": "http://web.archive.org/web/20010118223900/http://www.lyngsat.com:80/free/index.shtml",
+    "totalCountries": 18,
+    "totalChannels": 276,
+    "errorCount": 2,
+    "totalRequests": 14,
+    "executionTimeSeconds": 14.566
+  }
+}
