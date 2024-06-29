@@ -14,27 +14,39 @@ var Bottleneck = require("bottleneck/es5");
 
 async function isArchiveSufficientlyProcessed(hostname) {
     const dataFolder = path.join(__dirname, 'data');
-    const filePath = path.join(dataFolder, `${hostname}.json`);
+    
+    // Extract year and month from hostname
+    const [year, month] = hostname.slice(0, 6).match(/.{1,4}/g);
+    const monthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][parseInt(month, 10) - 1];
+    
+    // Create the new filename format
+    const newFilename = `${year}-${monthName}_${hostname}.json`;
+    const filePath = path.join(dataFolder, newFilename);
+
+    console.log(clc.cyan(`Checking file: ${newFilename}`));
 
     try {
         const fileContent = await fs.readFile(filePath, 'utf8');
         const data = JSON.parse(fileContent);
         const archiveData = data[hostname];
 
-        if (archiveData.totalCountries > 50) {
+        const MINIMUM_TOTAL_COUNTRIES = 10;
+        if (archiveData.totalCountries >= MINIMUM_TOTAL_COUNTRIES) {
             const errorPercentage = (archiveData.errorCount / archiveData.totalRequests) * 100;
             if (errorPercentage < 20) {
+                console.log(clc.green(`File ${newFilename} is sufficiently processed. Skipping.`));
                 return true;
             }
         }
+        console.log(clc.yellow(`File ${newFilename} needs processing.`));
     } catch (error) {
         // File doesn't exist or couldn't be read, so it hasn't been processed
+        console.log(clc.red(`File ${newFilename} not found or couldn't be read. It will be processed.`));
         return false;
     }
 
     return false;
 }
-
 
 async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
     const waybackApiUrl = "http://web.archive.org/cdx/search/cdx";
@@ -94,24 +106,28 @@ async function fetchArchivedUrlsForEachMonth(url, fromDate, toDate) {
 const username = process.env.GEONODE_USERNAME;
 const password = process.env.GEONODE_PASSWORD;
 const GEONODE_DNS = process.env.GEONODE_DNS;
-const GEONODE_PORT = process.env.GEONODE_PORT || 9005
 
+function getRandomPort() {
+    return Math.floor(Math.random() * (9010 - 9000 + 1)) + 9000;
+}
 
-
-const axiosInstance = axios.create({
-    timeout: 15000,
-    proxy: {
-        protocol: 'http',
-        host: GEONODE_DNS,
-        port: GEONODE_PORT,
-        auth: {
-            username,
-            password,
+function createAxiosInstance() {
+    return axios.create({
+        timeout: 15000,
+        proxy: {
+            protocol: 'http',
+            host: GEONODE_DNS,
+            port: getRandomPort(),
+            auth: {
+                username,
+                password,
+            },
         },
-    },
-});
+        maxContentLength: 52428800, 
+    });
+}
 
-axiosRetry(axiosInstance, {
+axiosRetry(axios, {
     retries: 3,
     retryCondition: (error) => {
         return error.code === 'ECONNABORTED' || (error.response && error.response.status >= 500);
@@ -121,24 +137,25 @@ axiosRetry(axiosInstance, {
     },
 });
 
-// Set up Bottleneck
 const limiter = new Bottleneck({
-    maxConcurrent: 40, // 5 concurrent requests
+    maxConcurrent: 40,
 });
 
+const limitedGet = limiter.wrap(async function (url) {
+    const instance = createAxiosInstance();
+    return instance.get(url);
+});
+const limitedPost = limiter.wrap(async function (url, data, config) {
+    const instance = createAxiosInstance();
+    return instance.post(url, data, config);
+});
 
-// Wrap the Axios instance with the rate limiter
-const limitedGet = limiter.wrap(axiosInstance.get.bind(axiosInstance));
-const limitedPost = limiter.wrap(axiosInstance.post.bind(axiosInstance));
 const limitedAxios = {
     get: limitedGet,
     post: limitedPost,
-    // You can add other methods if needed
 };
 
-
-let requestCount = 0; // Initialize request count
-
+let requestCount = 0;
 
 async function fetchPage(url) {
     try {
@@ -154,6 +171,7 @@ async function fetchPage(url) {
 }
 
 
+//web.archive.org
 async function getFreeTVUrl({ archiveUrl }) {
     try {
         const $ = await fetchPage(archiveUrl);
@@ -169,7 +187,15 @@ async function getFreeTVUrl({ archiveUrl }) {
             return null;
         }
 
-        const freeTvUrl = url.resolve(archiveUrl, $(freeTvLink).attr('href'));
+        let freeTvUrl = url.resolve(archiveUrl, $(freeTvLink).attr('href'));
+        
+        if (!freeTvUrl.includes('web.archive.org')) {
+            const archiveUrlParts = archiveUrl.split('/');
+            const archiveBase = archiveUrlParts.slice(0, 6).join('/') + '/';
+            const freeTvUrlPath = new URL(freeTvUrl).pathname;
+            freeTvUrl = archiveBase + 'www.lyngsat.com' + freeTvUrlPath;
+        }
+
         console.log(clc.green(`📺 Found Free TV URL: ${freeTvUrl}\n`));
         return freeTvUrl;
     } catch (error) {
@@ -195,7 +221,15 @@ async function getRegionLinks({ freeTvUrl }) {
                     const $aElement = freeTv$(aElement);
                     const aText = $aElement.text().trim();
                     const aHref = $aElement.attr('href');
-                    const fullUrl = aHref ? url.resolve(freeTvUrl, aHref) : 'N/A';
+                    let fullUrl = aHref ? url.resolve(freeTvUrl, aHref) : 'N/A';
+                    
+                    if (!fullUrl.includes('web.archive.org')) {
+                        const freeTvUrlParts = freeTvUrl.split('/');
+                        const archiveBase = freeTvUrlParts.slice(0, 6).join('/') + '/';
+                        const fullUrlPath = new URL(fullUrl).pathname;
+                        fullUrl = archiveBase + 'www.lyngsat.com' + fullUrlPath;
+                    }
+                    
                     console.log(clc.magenta(`   🔗 Link: ${aText} - ${fullUrl}`));
                     return !aText.startsWith('Free') ? { text: aText, url: fullUrl } : null;
                 }).get().filter(Boolean);
@@ -529,19 +563,12 @@ async function extractChannelDataFromChannelPage({ channelPageUrl }) {
 
 function extractText($element) {
     $element.find('br').replaceWith(' ');
-
     let text = $element.text();
-
     text = text.replace(/\u00a0/g, ' ');
-
     text = text.replace(/\s+/g, ' ');
-
     text = text.trim();
-
     return text;
 }
-
-
 
 
 
