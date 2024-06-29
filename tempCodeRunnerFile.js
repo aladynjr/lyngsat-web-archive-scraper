@@ -12,28 +12,23 @@ function formatDate(timestamp) {
   return `${year}-${month}`;
 }
 
-function mergeAdditionalData(additionalData) {
+function processAdditionalData(additionalData) {
   if (!Array.isArray(additionalData)) {
-    return additionalData || {};
+    return JSON.stringify(additionalData);
   }
   
-  return additionalData.reduce((acc, item) => {
-    for (const [key, value] of Object.entries(item)) {
-      if (acc[key]) {
-        acc[key] += `, ${value}`;
-      } else {
-        acc[key] = value;
-      }
-    }
-    return acc;
-  }, {});
+  return additionalData.map(item => {
+    return Object.entries(item)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('; ');
+  }).join(' | ');
 }
 
 function processAllJsonFiles() {
   const dataDir = path.join(__dirname, 'data');
   const outputDir = path.join(__dirname, 'output');
   const allCsvRows = [];
-  const headers = new Set(['Archived on', 'Timestamp', 'Region', 'Country', 'Country URL', 'Channel Name', 'Logo', 'Channel Page']);
+  const headers = new Set(['Archived on', 'Timestamp', 'Region', 'Country', 'Country URL', 'Channel Name', 'Logo', 'Channel Page', 'Additional Data']);
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
@@ -60,21 +55,15 @@ function processAllJsonFiles() {
                       'Channel Name': channel['Channel Name'] || '',
                       'Logo': channel['Logo'] || '',
                       'Channel Page': channel['Channel Page'] || '',
+                      'Additional Data': processAdditionalData(channel.additional_data)
                     };
 
-                    // Add any other channel properties
+                    // Add any other channel properties dynamically
                     for (const [key, value] of Object.entries(channel)) {
                       if (!['Channel Name', 'Logo', 'Channel Page', 'additional_data'].includes(key)) {
                         headers.add(key);
                         rowData[key] = value;
                       }
-                    }
-
-                    // Merge additional_data
-                    const mergedAdditionalData = mergeAdditionalData(channel.additional_data);
-                    for (const [key, value] of Object.entries(mergedAdditionalData)) {
-                      headers.add(key);
-                      rowData[key] = value;
                     }
 
                     allCsvRows.push(rowData);
@@ -88,24 +77,11 @@ function processAllJsonFiles() {
     }
   });
 
-  // Merge 'Frequency' and 'Frequency text' columns
-  allCsvRows.forEach(row => {
-    if (row['Frequency text']) {
-      row['Frequency'] = row['Frequency text'] + (row['Frequency'] ? `, ${row['Frequency']}` : '');
-      delete row['Frequency text'];
-    }
-  });
-  headers.delete('Frequency text');
-
-  // Remove columns with no values
-  const nonEmptyHeaders = Array.from(headers).filter(header => 
-    allCsvRows.some(row => row[header] !== undefined && row[header] !== '')
-  );
-
+  const headerArray = Array.from(headers);
   const csvContent = [
-    nonEmptyHeaders.join(','),
+    headerArray.join(','),
     ...allCsvRows.map(row => 
-      nonEmptyHeaders.map(header => {
+      headerArray.map(header => {
         const value = row[header] || '';
         return `"${value.toString().replace(/"/g, '""')}"`;
       }).join(',')
